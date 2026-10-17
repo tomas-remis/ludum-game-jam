@@ -1,26 +1,29 @@
 using Godot;
 using System;
 using System.ComponentModel.Design;
+using System.Linq;
 
-enum Rotation
+// TODO: Sprite rendering, rotation and offsetting, scenes for each possible block, generator/enumerator for next block view,
+enum Rotation { Up, Right, Down, Left }
+public partial class Block : Sprite2D
 {
-	Up,
-	Right,
-	Down,
-	Left
-}
-public partial class Block : Godot.Sprite2D
-{
-	public readonly Vector2I[] coords;
-	Vector2I offset = new(0, 0);
+	public Vector2I[] coords;
+	public Vector2I offset = new(0, 0);
 	Rotation rotation = Up;
-
 
 	public Vector2I[] gridCoords() => coords.Select(coord => coord + offset);
 	public void rotateInternal(bool clockwise)
 	{
-		if (clockwise) coords = coords.Select(coord => new(-coord.y, coord.x));
-		else coords = coords.Select(coord => new(coord.y, -coord.x));
+		if (clockwise)
+		{
+			coords = coords.Select(coord => new(-coord.y, coord.x));
+			rotation = (rotation + 1) % 4;
+		}
+		else
+		{
+			coords = coords.Select(coord => new(coord.y, -coord.x));
+			rotation = (rotation - 1) % 4;
+		}
 	}
 
 	// block shape presets
