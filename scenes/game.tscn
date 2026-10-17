@@ -1,3 +1,47 @@
 [gd_scene format=3 uid="uid://dibp4au7iub8r"]
 
+[ext_resource type="Texture2D" uid="uid://bfw5lybcvqov5" path="res://assets/Zink/PNG/Zink_Only/sprZinkWalkE.png" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bfewpt22cumsu" path="res://scenes/player.gd" id="1_yqjtg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yqjtg"]
+radius = 15.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnu2h"]
+atlas = ExtResource("1_uwrxv")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbhrr"]
+atlas = ExtResource("1_uwrxv")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iywne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnu2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbhrr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="Game" type="Node2D" unique_id=1493754398]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1273025718]
+script = ExtResource("1_yqjtg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=331801745]
+shape = SubResource("CircleShape2D_yqjtg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=911718121]
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_iywne")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.7883611
+
+[node name="fff" type="Camera2D" parent="." unique_id=1046622021]
+zoom = Vector2(4, 4)
