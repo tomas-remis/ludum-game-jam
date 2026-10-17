@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://b25x6761bs00g"]
 
+[ext_resource type="Script" uid="uid://q8pnpgng34au" path="res://scripts/TetrisGrid.cs" id="1_ig7tw"]
+
 [node name="Node2D" type="Node2D" unique_id=200043499]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1142320318]
+script = ExtResource("1_ig7tw")
