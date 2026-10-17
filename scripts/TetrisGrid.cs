@@ -5,7 +5,7 @@ public partial class TetrisGrid : Node2D
 {
 	private Node2D currentBlock;
 	private Node2D nextBlock;
-	private int[,] grid = new int[11, 10];
+	private int[,] grid = new int[12, 10];
 	
 	
 	private float curCooldown;
@@ -15,8 +15,12 @@ public partial class TetrisGrid : Node2D
 	
 	[Export]
 	private float cellSize = 1.5f;
+
+	[Export]
+	private readonly PackedScene[] blocks;
 	
 	private int thresholdRow = 2;
+	private readonly RandomNumberGenerator gen = new();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -28,7 +32,7 @@ public partial class TetrisGrid : Node2D
 	public override void _Process(double delta)
 	{
 		if(curCooldown <= 0){
-			fallBlock();	
+			FallBlock();	
 		}else{
 			curCooldown -= delay;
 		}
@@ -38,24 +42,24 @@ public partial class TetrisGrid : Node2D
 	{
 		if (@event.IsActionPressed("move_left"))
 		{
-			moveBlock(true);
+			MoveBlock(true);
 		}
 		else if(@event.IsActionPressed("move_right"))
 		{
-			moveBlock(false);
+			MoveBlock(false);
 		}
 		else if(@event.IsActionPressed("rotate")){
-			rotateBlock();
+			RotateBlock();
 		}
 	}
 	
-	private void fallBlock(){
+	private void FallBlock(){
 		curCooldown = delay;
-		foreach(Vector2I coord in currentBlock.coords){
+		foreach(Vector2I coord in currentBlock.gridCoords()){
 			int newY = coord.Y + 1;
 			
 			if(newY > grid.GetLength(0) || grid[newY, coord.Y] == 1){
-				placeBlock();
+				PlaceBlock();
 				return;
 			}
 		}
@@ -64,31 +68,50 @@ public partial class TetrisGrid : Node2D
 		currentBlock.offset.Y += new Vector2I(0, 1);
 	}
 	
-	private void placeBlock(){
-		foreach(Vector2I coord in currentBlock.coords){
+	private void PlaceBlock(){
+		foreach(Vector2I coord in currentBlock.gridCoords()){
 			if(coord.Y <= thresholdRow){
-				resetGrid();
-				return;
+				ResetGrid();
+				break;
 			}
 			grid[coord.Y, coord.X] = 1;	
 		}
+		currentBlock = nextBlock;
+		nextBlock = GetNextBlock();
 		
+		int offsetY = 0;
+		int offsetX = blocks.GetLength(1) / 2;
+		foreach(Vector2I coord in currentBlock.coords){
+			offsetY = Math.Min(offsetY, coord.Y);
+		}
+
+		nextBlock.Position = new Vector2((offsetX + 0.5f) * cellSize, (offsetY + 0.5f) * cellSize);
+		nextBlock.offset = new Vector2(offsetX, offsetY);
 	}
 	
-	private void resetGrid(){
+	private void ResetGrid(){
 		foreach(Node child in GetChildren()){
 			child.QueueFree();
 		}
-		currentBlock = nextBlock; 
+
+		for(int y = 0; y < grid.GetLength(0); ++y)
+		{
+			for(int x = 0; x < grid.GetLength(1); ++x)
+			{
+				grid[y, x] = 0;
+			}
+		}
+
 	}
 	
-	private Node2D getNextBlock(){
-		
+	private Node2D GetNextBlock(){
+		int index = (int) gen.Randi() % blocks.Length;
+		return blocks[index].Instantiate() as Node2D;
 	}
 	
-	private void rotateBlock(){
+	private void RotateBlock(){
 		currentBlock.rotateInternal(true);
-		foreach(Vector2I coord in currentBlock.coords)
+		foreach(Vector2I coord in currentBlock.gridCoords())
 		{
 			if(grid[coord.Y, coord.X] == 1)
 			{
@@ -99,12 +122,12 @@ public partial class TetrisGrid : Node2D
 		currentBlock.Rotate((float) Math.PI / 2);
 	}
 	
-	private void moveBlock(bool left){
+	private void MoveBlock(bool left){
 		int dir = left ? -1 : 1;
-		foreach(Vector2I coord in currentBlock.coords){
+		foreach(Vector2I coord in currentBlock.gridCoords()){
 			int newX = coord.X + dir;
 			
-			if(newX < 0 || newX > grid.GetLength(1) || grid[coord.y, newX] == 1){
+			if(newX < 0 || newX > grid.GetLength(1) || grid[coord.Y, newX] == 1){
 				return;
 			}
 		}
