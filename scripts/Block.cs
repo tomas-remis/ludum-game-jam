@@ -46,7 +46,7 @@ public partial class Block : Sprite2D
 
 		Node2D pivotNode = GetParent<Node2D>();
 		
-		pivotNode.Position = pivot * cellSize;
+		//pivotNode.Position = pivot * cellSize;
 		Position = -pivot * cellSize;
 		/**
 		foreach(Vector2I coord in coords)
@@ -68,7 +68,7 @@ public partial class Block : Sprite2D
 				Size = new Vector2(30, 30) / Scale,
 				Position = new Vector2(-15, -15)
 			};
-		parent.AddChild(rectp);
+		parent.x(rectp);
 		**/
 	}
 

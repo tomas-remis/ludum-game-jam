@@ -126,11 +126,14 @@ public partial class TetrisGrid : Node2D
 		foreach(Vector2I coord in block.coords){
 			offsetInternalY = Math.Min(offsetInternalY, coord.Y);
 		}
-
-		parent.Position = new Vector2(offsetInternalX * cellSize, offsetInternalY * cellSize);
 		block.offsetInternal = new Vector2I(offsetInternalX, offsetInternalY);
 		block.AdjustScale(cellSize);
 
+		parent.Position = new Vector2(
+			offsetInternalX + block.pivot.X,
+			offsetInternalY + block.pivot.Y
+		) * cellSize;
+ 
 		AddChild(parent);
 		return block;
 	}
@@ -139,7 +142,7 @@ public partial class TetrisGrid : Node2D
 		currentBlock.rotateInternal(true);
 		foreach(Vector2I coord in currentBlock.gridCoords())
 		{
-			if(coord.X < 0 || coord.X >= grid.GetLength(1) || coord.Y >= grid.GetLength(0) || grid[coord.Y, coord.X] == 1)
+			if(coord.X < 0 || coord.Y < 0 || coord.X >= grid.GetLength(1) || coord.Y >= grid.GetLength(0) || grid[coord.Y, coord.X] == 1)
 			{
 				currentBlock.rotateInternal(false);
 				return;
