@@ -3,13 +3,16 @@ using System;
 using System.ComponentModel.Design;
 using System.Linq;
 
+using static Turn;
+public enum Turn { Up, Right, Down, Left }
+
 // TODO: Sprite rendering, rotation and offsetting, scenes for each possible block, generator/enumerator for next block view,
-enum Rotation { Up, Right, Down, Left }
 public partial class Block : Sprite2D
 {
+
 	public Vector2I[] coords;
 	public Vector2I offset = new(0, 0);
-	Rotation rotation = Up;
+	Turn rotation = Up;
 
 	public Vector2I[] gridCoords() => coords.Select(coord => coord + offset);
 	public void rotateInternal(bool clockwise)
