@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://y7hxnqnl1bwa"]
+
+[ext_resource type="Texture2D" uid="uid://xlfv00t6ao01" path="res://objects/o_tin_can.png" id="1_py3wg"]
+[ext_resource type="Script" uid="uid://dubnctxlqwxl7" path="res://scripts/Block.cs" id="2_84rve"]
+
+[node name="Can" type="Node2D" unique_id=1160668052]
+
+[node name="Pivot" type="Node2D" parent="." unique_id=282541383]
+
+[node name="Sprite" type="Sprite2D" parent="Pivot" unique_id=403182031]
+texture = ExtResource("1_py3wg")
+script = ExtResource("2_84rve")
+coords = Array[Vector2i]([Vector2i(0, 0)])

@@ -1,8 +1,44 @@
 [gd_scene format=3 uid="uid://b25x6761bs00g"]
 
 [ext_resource type="Script" uid="uid://q8pnpgng34au" path="res://scripts/TetrisGrid.cs" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://df01el84vckul" path="res://scenes/2x2 block.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://danphosowup4f" path="res://UI/container_back.png" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://bjx2ata1p6r7n" path="res://UI/container_front.png" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dy4ennb6ypkq2" path="res://scenes/t_car.tscn" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://cebeif7422st7" path="res://scripts/Scorer.cs" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://y7hxnqnl1bwa" path="res://scenes/can.tscn" id="6_272bh"]
 
 [node name="Node2D" type="Node2D" unique_id=200043499]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1142320318]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1284246026]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1068410476]
+
+[node name="Node" type="Node2D" parent="Node2D" unique_id=964965183]
+
+[node name="Background" type="Sprite2D" parent="Node2D/Node" unique_id=355572549]
+texture = ExtResource("3_1bvp3")
+
+[node name="Foreground" type="Sprite2D" parent="Node2D/Node" unique_id=481381975]
+texture = ExtResource("4_lquwl")
+
+[node name="TetrisGrid" type="Node2D" parent="Node2D" unique_id=2006578147 node_paths=PackedStringArray("scorer")]
+position = Vector2(-578, -498)
 script = ExtResource("1_ig7tw")
+cellSize = 60.0
+blocks = Array[PackedScene]([ExtResource("2_0xm2m"), ExtResource("5_7mycd"), ExtResource("6_272bh")])
+scorer = NodePath("../../UI/Scorer")
+
+[node name="UI" type="Control" parent="." unique_id=1403465996]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Scorer" type="Label" parent="UI" unique_id=1655228216]
+layout_mode = 0
+offset_left = -913.0
+offset_top = -507.0
+offset_right = -873.0
+offset_bottom = -484.0
+script = ExtResource("5_lquwl")

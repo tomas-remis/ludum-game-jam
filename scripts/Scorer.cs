@@ -1,8 +1,6 @@
 using Godot;
 using System;
 
-
-[GlobalClass]
 public partial class Scorer : Label
 {
 	// Called when the node enters the scene tree for the first time.
