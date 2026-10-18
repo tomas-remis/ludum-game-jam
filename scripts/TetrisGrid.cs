@@ -5,6 +5,7 @@ public partial class TetrisGrid : Node2D
 {
 	[Export]
 	private int totalScore;
+	[Export]
 	private Label clockLabel;
 
 	[Export]
