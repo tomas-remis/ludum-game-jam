@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://cku8v3cj12u6" path="res://assets/HUD/KyrillaSansSerif-Bold.ttf" id="1_brnl1"]
 [ext_resource type="Script" uid="uid://dw1sfnod57q4u" path="res://scripts/main_menu.gd" id="1_cyejb"]
 [ext_resource type="Texture2D" uid="uid://cdvbp16et0xfa" path="res://assets/HUD/animated-moscow-title-card-from-the-tetris-movie-2207550534.jpg" id="2_qqsp2"]
+[ext_resource type="FontFile" uid="uid://ytf7kqbfpxoq" path="res://UI/the-bomb-sound/The Bomb Sound.otf" id="4_lyibd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyibd"]
 texture = ExtResource("2_qqsp2")
@@ -28,6 +29,9 @@ corner_radius_bottom_left = 44
 corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyejb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onb27"]
+bg_color = Color(0.49803922, 0.36078432, 0.22352941, 1)
 
 [node name="MainMenu" type="Control" unique_id=184564733]
 layout_mode = 3
@@ -62,6 +66,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1682974482]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_brnl1")
+theme_override_font_sizes/font_size = 83
+text = "SOVIET TETRIS"
+
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=451870934]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_brnl1")
@@ -72,6 +82,18 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cyejb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
 text = "START
 JOB"
+
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=1728414539]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_brnl1")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_brnl1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cyejb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
+text = "CREDITS
+"
+vertical_icon_alignment = 2
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=1152799916]
 layout_mode = 2
@@ -84,15 +106,92 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
 text = "TERMINATE
 JOB"
 
-[node name="Label" type="Label" parent="VBoxContainer/Button2" unique_id=1682974482]
-layout_mode = 0
-offset_left = -36.0
-offset_top = -282.0
-offset_right = 601.0
-offset_bottom = -184.0
-theme_override_fonts/font = ExtResource("1_brnl1")
-theme_override_font_sizes/font_size = 83
-text = "SOVIET TETRIS"
+[node name="Panel2" type="Panel" parent="." unique_id=1158695599]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_onb27")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2" unique_id=826964217]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label5" type="Label" parent="Panel2/VBoxContainer2" unique_id=1849376173]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lyibd")
+theme_override_font_sizes/font_size = 75
+text = "Credits
+"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Panel2/VBoxContainer2" unique_id=1836448377]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lyibd")
+theme_override_font_sizes/font_size = 50
+text = "Programming"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Panel2/VBoxContainer2" unique_id=1122700748]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lyibd")
+theme_override_font_sizes/font_size = 25
+text = "Sakibot
+Person
+Another person"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel2/VBoxContainer2" unique_id=1362616897]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lyibd")
+theme_override_font_sizes/font_size = 50
+text = "Art"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Panel2/VBoxContainer2" unique_id=939953607]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lyibd")
+theme_override_font_sizes/font_size = 25
+text = "SO many people"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Panel2/VBoxContainer2" unique_id=409939661]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lyibd")
+theme_override_font_sizes/font_size = 50
+text = "Music"
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Panel2/VBoxContainer2" unique_id=1739281237]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lyibd")
+theme_override_font_sizes/font_size = 25
+text = "Keilaniemi
+
+"
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="Panel2/VBoxContainer2" unique_id=1829663572]
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_brnl1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cyejb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
+text = "BACK"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button4" to="." method="toggle_credits"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="exit_button"]
+[connection signal="pressed" from="Panel2/VBoxContainer2/Button2" to="." method="toggle_credits"]
