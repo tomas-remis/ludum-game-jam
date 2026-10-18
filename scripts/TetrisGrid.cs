@@ -14,7 +14,7 @@ public partial class TetrisGrid : Node2D
 	[Export(PropertyHint.File, "*.tscn")]
 	private string menuScene = "res://scripts/main_menu.tscn";
 
-	private double clockSeconds = 80;  
+	private double clockSeconds;  
 	private bool timeUp;
 
 	[Export]

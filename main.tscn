@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://y7hxnqnl1bwa" path="res://scenes/can.tscn" id="6_272bh"]
 [ext_resource type="Texture2D" uid="uid://4u180whjg5kw" path="res://UI/container_back_2.png" id="6_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://cpgdkdflbovkf" path="res://scenes/pixar.tscn" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://ncyuurxv7fol" path="res://UI/crusher_gameover.png" id="7_lswn8"]
 [ext_resource type="PackedScene" uid="uid://if66broxpum3" path="res://scenes/chair.tscn" id="8_kek77"]
 [ext_resource type="AudioStream" uid="uid://cansxrlxobkuf" path="res://objects/koiroylers-metal-pipe-357573.mp3" id="9_4c57u"]
 [ext_resource type="Texture2D" uid="uid://dkbg51y4o8nop" path="res://UI/crusher.png" id="10_dg77c"]
@@ -22,12 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://d2qvjhnidumfs" path="res://UI/hook.png" id="12_vivmo"]
 [ext_resource type="Texture2D" uid="uid://c0ri1aa2mqy4d" path="res://objects/T_car.png" id="12_w48qg"]
 [ext_resource type="PackedScene" uid="uid://yoa1h74ltfvk" path="res://crane.tscn" id="12_ycdy4"]
-[ext_resource type="Shader" uid="uid://baq62qt13ikri" path="res://crt_monitor.gdshader" id="13_2cqfq"]
+[ext_resource type="Shader" path="res://crt_monitor.gdshader" id="13_2cqfq"]
 [ext_resource type="Script" uid="uid://sq23mlp43lq4" path="res://scripts/PiecePreviewer.cs" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://ckwe78s0xqw7" path="res://HookPosition.cs" id="15_ryguw"]
-[ext_resource type="PackedScene" uid="uid://d3xa3rd5fkxu2" path="res://scenes/rod.tscn" id="15_xuqvo"]
-[ext_resource type="PackedScene" uid="uid://dr2hn7825m6yp" path="res://scenes/duck.tscn" id="16_qsp4k"]
-[ext_resource type="PackedScene" uid="uid://dx26y46pwb8l6" path="res://scenes/gramaphone.tscn" id="17_qsp4k"]
+[ext_resource type="PackedScene" path="res://scenes/rod.tscn" id="15_xuqvo"]
+[ext_resource type="PackedScene" path="res://scenes/duck.tscn" id="16_qsp4k"]
+[ext_resource type="PackedScene" path="res://scenes/gramaphone.tscn" id="17_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://neoe0amhygdi" path="res://scenes/tv.tscn" id="18_kq58d"]
 [ext_resource type="Texture2D" uid="uid://basj03kh6a33j" path="res://UI/ui_monitor.png" id="19_cegan"]
 
@@ -188,6 +189,7 @@ position = Vector2(-578, -430)
 script = ExtResource("1_ig7tw")
 clockLabel = NodePath("../../UI/Timer")
 wipeSprite = NodePath("crusher")
+gameOverWipeTex = ExtResource("7_lswn8")
 placeSound = NodePath("Pipe")
 musicPlayer = NodePath("MusicPlayer")
 music = Array[AudioStreamWAV]([ExtResource("4_cegan"), ExtResource("5_82xsv")])
