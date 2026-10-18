@@ -128,6 +128,7 @@ public partial class TetrisGrid : Node2D
 
 		musicPlayer.Stream = music[0];
 		musicPlayer.Play();
+		musicPlayer.Finished += () => musicPlayer.Play();
 	}
 
 
