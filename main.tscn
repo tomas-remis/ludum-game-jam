@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://d3xa3rd5fkxu2" path="res://scenes/rod.tscn" id="15_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://dr2hn7825m6yp" path="res://scenes/duck.tscn" id="16_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://dx26y46pwb8l6" path="res://scenes/gramaphone.tscn" id="17_qsp4k"]
+[ext_resource type="PackedScene" uid="uid://neoe0amhygdi" path="res://scenes/tv.tscn" id="18_kq58d"]
 [ext_resource type="Texture2D" uid="uid://basj03kh6a33j" path="res://UI/ui_monitor.png" id="19_cegan"]
 
 [sub_resource type="Gradient" id="Gradient_xuqvo"]
@@ -192,7 +193,7 @@ musicPlayer = NodePath("MusicPlayer")
 music = Array[AudioStreamWAV]([ExtResource("4_cegan"), ExtResource("5_82xsv")])
 hookController = NodePath("Node2D")
 cellSize = 58.0
-blocks = Array[PackedScene]([ExtResource("2_0xm2m"), ExtResource("5_7mycd"), ExtResource("6_272bh"), ExtResource("7_5vw27"), ExtResource("8_kek77"), ExtResource("15_xuqvo"), ExtResource("16_qsp4k"), ExtResource("17_qsp4k")])
+blocks = Array[PackedScene]([ExtResource("2_0xm2m"), ExtResource("5_7mycd"), ExtResource("6_272bh"), ExtResource("7_5vw27"), ExtResource("8_kek77"), ExtResource("15_xuqvo"), ExtResource("16_qsp4k"), ExtResource("17_qsp4k"), ExtResource("18_kq58d")])
 scorer = NodePath("../../UI/Scorer2")
 nextPreview = NodePath("../../UI/Preview/ScreenColor/Control/TextureRect2")
 
