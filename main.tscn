@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b25x6761bs00g"]
+[gd_scene load_steps=17 format=3 uid="uid://b25x6761bs00g"]
 
 [ext_resource type="Script" uid="uid://q8pnpgng34au" path="res://scripts/TetrisGrid.cs" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://df01el84vckul" path="res://scenes/2x2 block.tscn" id="2_0xm2m"]
@@ -11,7 +11,27 @@
 [ext_resource type="PackedScene" uid="uid://if66broxpum3" path="res://scenes/chair.tscn" id="8_kek77"]
 [ext_resource type="AudioStream" uid="uid://cansxrlxobkuf" path="res://objects/koiroylers-metal-pipe-357573.mp3" id="9_4c57u"]
 [ext_resource type="Texture2D" uid="uid://dkbg51y4o8nop" path="res://UI/crusher.png" id="10_dg77c"]
+[ext_resource type="FontFile" uid="uid://c2gusyk04oyh2" path="res://UI/sf-digital-readout/SFDigitalReadout-Heavy.ttf" id="11_vivmo"]
 [ext_resource type="PackedScene" uid="uid://yoa1h74ltfvk" path="res://crane.tscn" id="12_ycdy4"]
+[ext_resource type="Shader" uid="uid://baq62qt13ikri" path="res://crt_monitor.gdshader" id="13_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://nocxbbqb3se2" path="res://UI/ui_monitor.png" id="13_vivmo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yaehf"]
+shader = ExtResource("13_2cqfq")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -49,13 +69,40 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="ScreenColor" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = -949.0
+offset_top = -513.0
+offset_right = -909.0
+offset_bottom = -473.0
+scale = Vector2(7.414211, 8.472247)
+color = Color(0.23895198, 0.4102795, 0.3451739, 1)
+
 [node name="Scorer" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = -913.0
-offset_top = -507.0
-offset_right = -873.0
-offset_bottom = -484.0
+offset_left = -898.0
+offset_top = -473.0
+offset_right = -722.0
+offset_bottom = -415.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_vivmo")
+theme_override_font_sizes/font_size = 96
+text = "SCORE"
 script = ExtResource("5_lquwl")
+
+[node name="VFX" type="ColorRect" parent="UI"]
+material = SubResource("ShaderMaterial_yaehf")
+layout_mode = 0
+offset_left = -949.0
+offset_top = -510.0
+offset_right = -909.0
+offset_bottom = -470.0
+scale = Vector2(7.2944164, 8.35061)
+
+[node name="Monitor" type="Sprite2D" parent="UI"]
+position = Vector2(-746, -231)
+texture = ExtResource("13_vivmo")
+metadata/_edit_lock_ = true
 
 [node name="Crane" parent="." instance=ExtResource("12_ycdy4")]
 
@@ -64,3 +111,5 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Hook" type="Sprite2D" parent="Hook"]
