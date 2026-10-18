@@ -21,18 +21,53 @@ public partial class TetrisGrid : Node2D
 
 	[Export]
 	private Scorer scorer;
+
+	[Export]  // These are for smooth movement
+	private double moveRepeatDelay = 0.25;
+	[Export] 
+	private double moveRepeatInterval = 0.08;
+
+	private double moveRepeatTimer;
+	private int heldMoveDirection;
 	
+
+
+ // For better debugging
+	public override void _Draw()
+	{
+		foreach (Vector2I coord in currentBlock.gridCoords())
+		{
+			var rect = new Rect2(
+				coord.X * cellSize,
+				coord.Y * cellSize,
+				cellSize,
+				cellSize
+			);
+
+			DrawRect(rect, new Color(0, 0, 1, 0.25f), true);
+			DrawRect(rect, Colors.Blue, false, 1.0f);
+		}
+	}
+
+
+
+
+
 	private int thresholdRow = 2;
 	private readonly RandomNumberGenerator gen = new();
-	
+ 
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		curCooldown = delay;
-		currentBlock = GetNextBlock(0);
+		currentBlock = GetNextBlock(1);
 		currentBlock.Visible = true;
 		nextBlock = GetNextBlock(1);
+	
 	}
+	
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -42,26 +77,59 @@ public partial class TetrisGrid : Node2D
 		}else{
 			curCooldown -= delta;
 		}
+		HandleHorizontalInput(delta);
+		QueueRedraw(); //for debugging block
 	}
 	
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("move_left"))
-		{
-			MoveBlock(true);
-		}
-		else if(@event.IsActionPressed("move_right"))
-		{
-			MoveBlock(false);
-		}
-		else if(@event.IsActionPressed("rotate")){
+		if (@event.IsActionPressed("rotate"))
 			RotateBlock();
-		}
 		else if (@event.IsActionPressed("move_down"))
-		{
 			FallBlock();
+		else if (@event.IsActionPressed("hard_drop"))
+		HardDrop();
+	}
+
+
+	private void HardDrop()
+	{
+		Block dropping = currentBlock;
+		// FallBlock calls PlaceBlock when it hits something, which swaps currentBlock.
+		// So keep falling until the current block is no longer the one we started with.
+		while (currentBlock == dropping)
+			FallBlock();
+	}
+	private void HandleHorizontalInput(double delta)
+	{
+		bool left = Input.IsActionPressed("move_left");
+		bool right = Input.IsActionPressed("move_right");
+
+		int direction = left == right ? 0 : (left ? -1 : 1);
+
+		if (direction == 0)
+		{
+			heldMoveDirection = 0;
+			moveRepeatTimer = 0;
+			return;
+		}
+
+		if (direction != heldMoveDirection)
+		{
+			heldMoveDirection = direction;
+			MoveBlock(direction < 0);
+			moveRepeatTimer = moveRepeatDelay;
+			return;
+		}
+
+		moveRepeatTimer -= delta;
+		if (moveRepeatTimer <= 0)
+		{
+			MoveBlock(direction < 0);
+			moveRepeatTimer = moveRepeatInterval;
 		}
 	}
+
 	
 	private void FallBlock(){
 		curCooldown = delay;
@@ -115,7 +183,7 @@ public partial class TetrisGrid : Node2D
 	}
 	
 	private Block GetNextBlock(int index=0){
-		//int index = gen.RandiRange(0, blocks.Length - 1);
+		//index = gen.RandiRange(0, blocks.Length - 1);
 		//int index = 1;
 		Node2D parent = blocks[index].Instantiate() as Node2D;
 		Block block = parent.FindChild("Sprite", recursive: true, owned: false) as Block;
@@ -138,27 +206,38 @@ public partial class TetrisGrid : Node2D
 		return block;
 	}
 	
-	private void RotateBlock(){
-		currentBlock.rotateInternal(true);
-		foreach(Vector2I coord in currentBlock.gridCoords())
+	private void RotateBlock()
+	{
+		var originalCoords = currentBlock.coords.Duplicate();
+		var originalPivot = currentBlock.pivot;
+		Vector2 delta = currentBlock.rotateInternal();
+
+		foreach (Vector2I coord in currentBlock.gridCoords())
 		{
-			if(coord.X < 0 || coord.Y < 0 || coord.X >= grid.GetLength(1) || coord.Y >= grid.GetLength(0) || grid[coord.Y, coord.X] == 1)
+			if (coord.X < 0 || coord.Y < 0 ||
+				coord.X >= grid.GetLength(1) ||
+				coord.Y >= grid.GetLength(0) ||
+				grid[coord.Y, coord.X] == 1)
 			{
-				currentBlock.rotateInternal(false);
+				currentBlock.coords = originalCoords;
+				currentBlock.pivot = originalPivot;
 				return;
 			}
 		}
+
 		Node2D parent = currentBlock.GetParent<Node2D>();
 		parent.Rotate(Mathf.Pi / 2);
+		parent.Position += delta * cellSize;  
 	}
+
+	
+
 	
 	private void MoveBlock(bool left){
 		int dir = left ? -1 : 1;
 		foreach(Vector2I coord in currentBlock.gridCoords()){
 			int newX = coord.X + dir;
 
-			GD.Print(newX);
-			
 			if(newX < 0 || newX >= grid.GetLength(1) || grid[coord.Y, newX] == 1){
 				return;
 			}

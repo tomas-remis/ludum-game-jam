@@ -68,26 +68,33 @@ public partial class Block : Sprite2D
 				Size = new Vector2(30, 30) / Scale,
 				Position = new Vector2(-15, -15)
 			};
-		parent.x(rectp);
+		parent.AddChild(rectp);
 		**/
 	}
 
 
 	public Godot.Collections.Array<Vector2I> gridCoords() => [.. coords.Select(coord => coord + offsetInternal)];
-	public void rotateInternal(bool clockwise)
+
+	public Vector2 rotateInternal()
 	{
-		coords = [.. coords.Select(coord => {
-			
-			float dx = coord.X + 0.5f - pivot.X;
-			float dy = coord.Y + 0.5f - pivot.Y;
+		var corners = coords.Select(coord =>
+		{
+			Vector2 d = new Vector2(coord.X + 0.5f, coord.Y + 0.5f) - pivot;
+			d = new Vector2(-d.Y, d.X);   // rotate 90° clockwise
+			return pivot + d - new Vector2(0.5f, 0.5f);
+		}).ToArray();
 
-				(dx, dy) = clockwise ? (-dy, dx) : (dy, -dx);
+		Vector2 delta = new Vector2(
+			Mathf.Round(corners[0].X) - corners[0].X,
+			Mathf.Round(corners[0].Y) - corners[0].Y);
 
-			return new Vector2I(Mathf.FloorToInt(dx + pivot.X), Mathf.FloorToInt(dy + pivot.Y));
-			})];
-			//rotation = (rotation + 1) % 4;
+		coords = [.. corners.Select(c => new Vector2I(
+			Mathf.RoundToInt(c.X + delta.X),
+			Mathf.RoundToInt(c.Y + delta.Y)))];
+
+		pivot += delta;
+		return delta;
 	}
-
 	// block shape presets
 
 	public static readonly Vector2I[] one = [new(0, 0)];
