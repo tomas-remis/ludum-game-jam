@@ -14,7 +14,7 @@ public partial class TetrisGrid : Node2D
 	[Export(PropertyHint.File, "*.tscn")]
 	private string menuScene = "res://scripts/main_menu.tscn";
 
-	private double clockSeconds;  
+	private double clockSeconds = 100;  
 	private bool timeUp;
 
 	[Export]
@@ -101,7 +101,7 @@ public partial class TetrisGrid : Node2D
 				);
 
 				DrawRect(rect, new Color(0, 0, 0, 0.4f), true);
-				DrawRect(rect, new Color(1, 1, 1, 0.2f), false, 3.0f); //outline????? 
+				DrawRect(rect, new Color(1, 1, 1, 0.2f), false, 3.0f);
 			}
 		}
 	}
@@ -407,7 +407,6 @@ public partial class TetrisGrid : Node2D
 	}
 
 	if (gameMinutes >= 17 * 60){
-		scorer.UpdateScore(10);  // final update
 		timeUp = true;
 		GetTree().Root.SetMeta("final_score", totalScore);
 		wipeSprite.Texture = gameOverWipeTex;

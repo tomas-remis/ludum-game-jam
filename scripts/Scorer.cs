@@ -19,6 +19,6 @@ public partial class Scorer : Label
 	public void UpdateScore(int addedScore)
 	{
 		score += addedScore;
-		Text = "Score     " + addedScore.ToString();
+		Text = "Score   " + score.ToString();
 	}
 }

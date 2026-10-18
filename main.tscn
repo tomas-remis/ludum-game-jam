@@ -1,37 +1,37 @@
-[gd_scene load_steps=42 format=3 uid="uid://bvjxfrx7ked1g"]
+[gd_scene format=3 uid="uid://bvjxfrx7ked1g"]
 
-[ext_resource type="Texture2D" uid="uid://cr76iwk64m3r3" path="res://UI/sky.png" id="1_82xsv"]
+[ext_resource type="Texture2D" uid="uid://bdau3uj7h3ycw" path="res://UI/sky.png" id="1_82xsv"]
 [ext_resource type="Script" uid="uid://q8pnpgng34au" path="res://scripts/TetrisGrid.cs" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://df01el84vckul" path="res://scenes/2x2 block.tscn" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://dq4nvphb3ipmo" path="res://UI/buildings.png" id="2_getpj"]
-[ext_resource type="Texture2D" uid="uid://dm1kstc6irat2" path="res://UI/ground.png" id="3_ryguw"]
+[ext_resource type="Texture2D" uid="uid://bemwyhiefpmba" path="res://UI/buildings.png" id="2_getpj"]
+[ext_resource type="Texture2D" uid="uid://d1e800m68qgu0" path="res://UI/ground.png" id="3_ryguw"]
 [ext_resource type="AudioStream" uid="uid://b2ylnhd1cyouc" path="res://music/maintheme.wav" id="4_cegan"]
 [ext_resource type="Texture2D" uid="uid://dki52hagifb1s" path="res://UI/container_front.png" id="4_lquwl"]
-[ext_resource type="Texture2D" uid="uid://c880thihxwvo8" path="res://UI/cloud_particle.png" id="4_lswn8"]
+[ext_resource type="Texture2D" uid="uid://b7qyku4n1xcci" path="res://UI/cloud_particle.png" id="4_lswn8"]
 [ext_resource type="PackedScene" uid="uid://dy4ennb6ypkq2" path="res://scenes/t_car.tscn" id="5_7mycd"]
 [ext_resource type="AudioStream" uid="uid://bm523anx0fexe" path="res://music/faster.wav" id="5_82xsv"]
 [ext_resource type="Script" uid="uid://cebeif7422st7" path="res://scripts/Scorer.cs" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://y7hxnqnl1bwa" path="res://scenes/can.tscn" id="6_272bh"]
-[ext_resource type="Texture2D" uid="uid://clm34vsm401nd" path="res://UI/container_back_2.png" id="6_a6jrf"]
+[ext_resource type="Texture2D" uid="uid://4u180whjg5kw" path="res://UI/container_back_2.png" id="6_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://cpgdkdflbovkf" path="res://scenes/pixar.tscn" id="7_5vw27"]
-[ext_resource type="Texture2D" uid="uid://c3u55h8wp7pw6" path="res://UI/crusher_gameover.png" id="7_lswn8"]
+[ext_resource type="Texture2D" uid="uid://ncyuurxv7fol" path="res://UI/crusher_gameover.png" id="7_lswn8"]
 [ext_resource type="PackedScene" uid="uid://if66broxpum3" path="res://scenes/chair.tscn" id="8_kek77"]
 [ext_resource type="AudioStream" uid="uid://cansxrlxobkuf" path="res://objects/koiroylers-metal-pipe-357573.mp3" id="9_4c57u"]
 [ext_resource type="Texture2D" uid="uid://dkbg51y4o8nop" path="res://UI/crusher.png" id="10_dg77c"]
-[ext_resource type="FontFile" uid="uid://c2gusyk04oyh2" path="res://UI/sf-digital-readout/SFDigitalReadout-Heavy.ttf" id="11_vivmo"]
-[ext_resource type="Texture2D" uid="uid://chm2lfuvqlkwb" path="res://UI/wire.png" id="12_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://cfocjacy6y4qc" path="res://UI/hook.png" id="12_vivmo"]
+[ext_resource type="FontFile" uid="uid://mbu4jicxlfex" path="res://UI/sf-digital-readout/SFDigitalReadout-Heavy.ttf" id="11_vivmo"]
+[ext_resource type="Texture2D" uid="uid://crm2ek6imuv67" path="res://UI/wire.png" id="12_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://d2qvjhnidumfs" path="res://UI/hook.png" id="12_vivmo"]
 [ext_resource type="Texture2D" uid="uid://c0ri1aa2mqy4d" path="res://objects/T_car.png" id="12_w48qg"]
 [ext_resource type="PackedScene" uid="uid://yoa1h74ltfvk" path="res://crane.tscn" id="12_ycdy4"]
-[ext_resource type="Shader" uid="uid://baq62qt13ikri" path="res://crt_monitor.gdshader" id="13_2cqfq"]
+[ext_resource type="Shader" path="res://crt_monitor.gdshader" id="13_2cqfq"]
 [ext_resource type="Script" uid="uid://sq23mlp43lq4" path="res://scripts/PiecePreviewer.cs" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://ckwe78s0xqw7" path="res://HookPosition.cs" id="15_ryguw"]
 [ext_resource type="PackedScene" uid="uid://d3xa3rd5fkxu2" path="res://scenes/rod.tscn" id="15_xuqvo"]
 [ext_resource type="PackedScene" uid="uid://dr2hn7825m6yp" path="res://scenes/duck.tscn" id="16_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://dx26y46pwb8l6" path="res://scenes/gramaphone.tscn" id="17_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://neoe0amhygdi" path="res://scenes/tv.tscn" id="18_kq58d"]
-[ext_resource type="Texture2D" uid="uid://nocxbbqb3se2" path="res://UI/ui_monitor.png" id="19_cegan"]
-[ext_resource type="FontFile" uid="uid://dl4stppa3qlwr" path="res://assets/fonts-DSEG_v046/DSEG14-Modern/DSEG14Modern-Bold.woff" id="31_htxhm"]
+[ext_resource type="Texture2D" uid="uid://basj03kh6a33j" path="res://UI/ui_monitor.png" id="19_cegan"]
+[ext_resource type="FontFile" uid="uid://dhjr138tlha06" path="res://assets/fonts-DSEG_v046/DSEG14-Modern/DSEG14Modern-Bold.woff" id="31_htxhm"]
 
 [sub_resource type="Gradient" id="Gradient_xuqvo"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.039215688)
@@ -111,11 +111,11 @@ shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=913710413]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=677491199]
 
-[node name="Background" type="Control" parent="."]
+[node name="Background" type="Control" parent="." unique_id=417707732]
 z_index = -5
 layout_mode = 3
 anchors_preset = 0
@@ -124,7 +124,7 @@ offset_top = -541.0
 offset_right = -922.0
 offset_bottom = -501.0
 
-[node name="Sky" type="TextureRect" parent="Background"]
+[node name="Sky" type="TextureRect" parent="Background" unique_id=983944116]
 z_index = -10
 layout_mode = 0
 offset_right = 40.0
@@ -132,7 +132,7 @@ offset_bottom = 40.0
 texture = ExtResource("1_82xsv")
 metadata/_edit_lock_ = true
 
-[node name="Buildings" type="TextureRect" parent="Background"]
+[node name="Buildings" type="TextureRect" parent="Background" unique_id=1432762781]
 z_index = -3
 layout_mode = 0
 offset_left = 5.0
@@ -142,7 +142,7 @@ offset_bottom = 1078.0
 texture = ExtResource("2_getpj")
 metadata/_edit_lock_ = true
 
-[node name="DustParticles" type="GPUParticles2D" parent="Background"]
+[node name="DustParticles" type="GPUParticles2D" parent="Background" unique_id=1873798124]
 z_index = 10
 position = Vector2(-42, 494)
 amount = 64
@@ -153,14 +153,14 @@ preprocess = 2.44
 randomness = 0.23
 process_material = SubResource("ParticleProcessMaterial_a6jrf")
 
-[node name="Ground" type="TextureRect" parent="Background"]
+[node name="Ground" type="TextureRect" parent="Background" unique_id=903758230]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_ryguw")
 metadata/_edit_lock_ = true
 
-[node name="Clouds" type="GPUParticles2D" parent="Background"]
+[node name="Clouds" type="GPUParticles2D" parent="Background" unique_id=152846133]
 z_index = -1
 position = Vector2(-153, 478)
 amount = 32
@@ -171,22 +171,22 @@ preprocess = 2.0
 visibility_rect = Rect2(-100.765, -100, 400, 200)
 process_material = SubResource("ParticleProcessMaterial_xuqvo")
 
-[node name="Node2d" type="Node2D" parent="."]
+[node name="Node2d" type="Node2D" parent="." unique_id=1840587702]
 
-[node name="Node" type="Node2D" parent="Node2d"]
+[node name="Node" type="Node2D" parent="Node2d" unique_id=969629478]
 
-[node name="Foreground" type="Sprite2D" parent="Node2d/Node"]
+[node name="Foreground" type="Sprite2D" parent="Node2d/Node" unique_id=50216973]
 z_index = 1
 position = Vector2(0, 332)
 texture = ExtResource("4_lquwl")
 
-[node name="Background2" type="Sprite2D" parent="Node2d/Node/Foreground"]
+[node name="Background2" type="Sprite2D" parent="Node2d/Node/Foreground" unique_id=499296362]
 z_index = -4
 position = Vector2(0, 2.5)
 scale = Vector2(1, 1.0046296)
 texture = ExtResource("6_a6jrf")
 
-[node name="TetrisGrid" type="Node2D" parent="Node2d" node_paths=PackedStringArray("clockLabel", "wipeSprite", "placeSound", "musicPlayer", "hookController", "scorer", "nextPreview")]
+[node name="TetrisGrid" type="Node2D" parent="Node2d" unique_id=111922237 node_paths=PackedStringArray("clockLabel", "wipeSprite", "placeSound", "musicPlayer", "hookController", "scorer", "nextPreview")]
 position = Vector2(-578, -430)
 script = ExtResource("1_ig7tw")
 clockLabel = NodePath("../../UI/Timer")
@@ -201,21 +201,21 @@ blocks = Array[PackedScene]([ExtResource("2_0xm2m"), ExtResource("5_7mycd"), Ext
 scorer = NodePath("../../UI/Scorer2")
 nextPreview = NodePath("../../UI/Preview/ScreenColor/Control/TextureRect2")
 
-[node name="Pipe" type="AudioStreamPlayer" parent="Node2d/TetrisGrid"]
+[node name="Pipe" type="AudioStreamPlayer" parent="Node2d/TetrisGrid" unique_id=1796330274]
 stream = ExtResource("9_4c57u")
 
-[node name="crusher" type="Sprite2D" parent="Node2d/TetrisGrid"]
+[node name="crusher" type="Sprite2D" parent="Node2d/TetrisGrid" unique_id=758126220]
 position = Vector2(438, -757)
 texture = ExtResource("10_dg77c")
 offset = Vector2(0, -27)
 
-[node name="Node2D" type="Node2D" parent="Node2d/TetrisGrid"]
+[node name="Node2D" type="Node2D" parent="Node2d/TetrisGrid" unique_id=364157372]
 script = ExtResource("15_ryguw")
 
-[node name="Hook" type="Sprite2D" parent="Node2d/TetrisGrid/Node2D"]
+[node name="Hook" type="Sprite2D" parent="Node2d/TetrisGrid/Node2D" unique_id=1546609163]
 texture = ExtResource("12_vivmo")
 
-[node name="Wire" type="Sprite2D" parent="Node2d/TetrisGrid/Node2D"]
+[node name="Wire" type="Sprite2D" parent="Node2d/TetrisGrid/Node2D" unique_id=546702693]
 z_index = -1
 texture_repeat = 2
 position = Vector2(579, -234)
@@ -224,39 +224,39 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="Node2d/TetrisGrid"]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Node2d/TetrisGrid" unique_id=1562965622]
 autoplay = true
 
-[node name="Crane" parent="." instance=ExtResource("12_ycdy4")]
+[node name="Crane" parent="." unique_id=484982455 instance=ExtResource("12_ycdy4")]
 z_index = -3
 offset_left = -828.0
 offset_top = -517.0
 offset_right = -788.0
 offset_bottom = -477.0
 
-[node name="Hook" type="Control" parent="."]
+[node name="Hook" type="Control" parent="." unique_id=1918556361]
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Hook" type="Sprite2D" parent="Hook"]
+[node name="Hook" type="Sprite2D" parent="Hook" unique_id=1312393538]
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." unique_id=1337175538]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Preview" type="Control" parent="UI"]
+[node name="Preview" type="Control" parent="UI" unique_id=1848256015]
 anchors_preset = 0
 offset_left = -806.0
 offset_top = -339.0
 offset_right = -766.0
 offset_bottom = -299.0
 
-[node name="ScreenColor" type="ColorRect" parent="UI/Preview"]
+[node name="ScreenColor" type="ColorRect" parent="UI/Preview" unique_id=1697160326]
 layout_mode = 0
 offset_left = -143.0
 offset_top = -174.0
@@ -265,7 +265,7 @@ offset_bottom = -134.0
 scale = Vector2(7.414211, 8.472247)
 color = Color(0.23895198, 0.4102795, 0.3451739, 1)
 
-[node name="Control" type="Control" parent="UI/Preview/ScreenColor"]
+[node name="Control" type="Control" parent="UI/Preview/ScreenColor" unique_id=856235477]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -275,7 +275,7 @@ offset_bottom = -1.5443039
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect2" type="TextureRect" parent="UI/Preview/ScreenColor/Control"]
+[node name="TextureRect2" type="TextureRect" parent="UI/Preview/ScreenColor/Control" unique_id=570757804]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -287,7 +287,7 @@ expand_mode = 1
 stretch_mode = 5
 script = ExtResource("13_vivmo")
 
-[node name="Scorer3" type="Label" parent="UI/Preview"]
+[node name="Scorer3" type="Label" parent="UI/Preview" unique_id=1166832160]
 layout_mode = 0
 offset_left = -92.0
 offset_top = -134.0
@@ -299,7 +299,7 @@ theme_override_font_sizes/font_size = 96
 text = "NEXT"
 horizontal_alignment = 1
 
-[node name="VFX" type="ColorRect" parent="UI/Preview"]
+[node name="VFX" type="ColorRect" parent="UI/Preview" unique_id=1577889717]
 material = SubResource("ShaderMaterial_yaehf")
 layout_mode = 0
 offset_left = -143.0
@@ -308,14 +308,14 @@ offset_right = -103.0
 offset_bottom = -131.0
 scale = Vector2(7.2944164, 8.35061)
 
-[node name="Monitor" type="Sprite2D" parent="UI/Preview"]
+[node name="Monitor" type="Sprite2D" parent="UI/Preview" unique_id=807520294]
 position = Vector2(60, 108)
 texture = ExtResource("19_cegan")
 metadata/_edit_lock_ = true
 
-[node name="Scorer2" type="Label" parent="UI"]
+[node name="Scorer2" type="Label" parent="UI" unique_id=1233960313]
 layout_mode = 0
-offset_left = 431.0
+offset_left = 452.0
 offset_top = -504.0
 offset_right = 713.0
 offset_bottom = -427.0
@@ -323,14 +323,13 @@ theme_override_colors/font_color = Color(1, 0.8995, 0.32999998, 1)
 theme_override_fonts/font = ExtResource("31_htxhm")
 theme_override_font_sizes/font_size = 64
 text = "SCORE"
-horizontal_alignment = 2
 script = ExtResource("5_lquwl")
 
-[node name="Timer" type="Label" parent="UI"]
+[node name="Timer" type="Label" parent="UI" unique_id=637924620]
 layout_mode = 0
-offset_left = 452.0
+offset_left = 450.0
 offset_top = -421.0
-offset_right = 974.0
+offset_right = 953.0
 offset_bottom = -293.0
 theme_override_colors/font_color = Color(0.8448424, 0.84299535, 0.90385616, 1)
 theme_override_fonts/font = ExtResource("31_htxhm")
