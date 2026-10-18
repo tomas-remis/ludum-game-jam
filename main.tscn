@@ -1,17 +1,18 @@
-[gd_scene load_steps=35 format=3 uid="uid://bvjxfrx7ked1g"]
+[gd_scene load_steps=36 format=3 uid="uid://bvjxfrx7ked1g"]
 
 [ext_resource type="Texture2D" uid="uid://cr76iwk64m3r3" path="res://UI/sky.png" id="1_82xsv"]
 [ext_resource type="Script" uid="uid://q8pnpgng34au" path="res://scripts/TetrisGrid.cs" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://df01el84vckul" path="res://scenes/2x2 block.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dq4nvphb3ipmo" path="res://UI/buildings.png" id="2_getpj"]
-[ext_resource type="Texture2D" uid="uid://cjxckkmwbdn3n" path="res://UI/container_back.png" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://dm1kstc6irat2" path="res://UI/ground.png" id="3_ryguw"]
 [ext_resource type="AudioStream" uid="uid://b2ylnhd1cyouc" path="res://music/maintheme.wav" id="4_cegan"]
 [ext_resource type="Texture2D" uid="uid://dki52hagifb1s" path="res://UI/container_front.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://c880thihxwvo8" path="res://UI/cloud_particle.png" id="4_lswn8"]
 [ext_resource type="PackedScene" uid="uid://dy4ennb6ypkq2" path="res://scenes/t_car.tscn" id="5_7mycd"]
 [ext_resource type="AudioStream" uid="uid://bm523anx0fexe" path="res://music/faster.wav" id="5_82xsv"]
 [ext_resource type="Script" uid="uid://cebeif7422st7" path="res://scripts/Scorer.cs" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://y7hxnqnl1bwa" path="res://scenes/can.tscn" id="6_272bh"]
+[ext_resource type="Texture2D" uid="uid://clm34vsm401nd" path="res://UI/container_back_2.png" id="6_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://cpgdkdflbovkf" path="res://scenes/pixar.tscn" id="7_5vw27"]
 [ext_resource type="PackedScene" uid="uid://if66broxpum3" path="res://scenes/chair.tscn" id="8_kek77"]
 [ext_resource type="AudioStream" uid="uid://cansxrlxobkuf" path="res://objects/koiroylers-metal-pipe-357573.mp3" id="9_4c57u"]
@@ -26,21 +27,19 @@
 [ext_resource type="Script" uid="uid://ckwe78s0xqw7" path="res://HookPosition.cs" id="15_ryguw"]
 [ext_resource type="Texture2D" uid="uid://nocxbbqb3se2" path="res://UI/ui_monitor.png" id="19_cegan"]
 
-[sub_resource type="Gradient" id="Gradient_d13ii"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.9976284, 0.95346516, 0.7623335, 1)
+[sub_resource type="Gradient" id="Gradient_xuqvo"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.039215688)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1u8w0"]
-gradient = SubResource("Gradient_d13ii")
-width = 4
-height = 4
+gradient = SubResource("Gradient_xuqvo")
+width = 12
+height = 12
 fill = 1
-fill_to = Vector2(0.1, 0)
-repeat = 1
+fill_from = Vector2(0.5482866, 0.51713395)
 
 [sub_resource type="Gradient" id="Gradient_0odxb"]
 offsets = PackedFloat32Array(0, 0.7169811, 0.8930818, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.9647059, 1, 1, 1, 0.4591195, 1, 1, 1, 0)
+colors = PackedColorArray(0.61248, 0.66, 0.30359998, 1, 1, 1, 1, 0.75686276, 0.94205517, 0.8236478, 0.7987754, 0.7176471, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_lswn8"]
 gradient = SubResource("Gradient_0odxb")
@@ -49,35 +48,45 @@ gradient = SubResource("Gradient_0odxb")
 lifetime_randomness = 0.19
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(960, 540, 1)
+emission_box_extents = Vector3(20, 540, 1)
+angle_min = -419.1
+angle_max = 277.40002
 velocity_pivot = Vector3(0, -0.2, 0)
-direction = Vector3(10, 10, 0)
+direction = Vector3(15, 5, 0)
 spread = 10.661
 initial_velocity_min = 203.56
 initial_velocity_max = 575.25
 gravity = Vector3(0, 0, 0)
-damping_max = 0.1
-scale_min = 0.5
+scale_min = 0.19999999
+scale_max = 0.59999996
 scale_over_velocity_max = 2.0
 color_ramp = SubResource("GradientTexture1D_lswn8")
+turbulence_noise_strength = 0.54
 turbulence_noise_scale = 3.846
-turbulence_influence_max = 0.3
+turbulence_noise_speed = Vector3(50, 50, 0)
+turbulence_noise_speed_random = 0.44
+turbulence_influence_max = 0.23300001
 
-[sub_resource type="Gradient" id="Gradient_lswn8"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_qsp4k"]
+offsets = PackedFloat32Array(0, 0.5157233, 1)
+colors = PackedColorArray(0.43275106, 0.46017355, 0.6492504, 0.69411767, 0.5005575, 0.4621439, 0.35172862, 0.45882353, 0.5376, 0.6081601, 0.84, 0.7019608)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a6jrf"]
-gradient = SubResource("Gradient_lswn8")
-fill = 1
-fill_from = Vector2(0.5077882, 0.49221185)
-fill_to = Vector2(0.9127726, 0.3364486)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kq58d"]
+gradient = SubResource("Gradient_qsp4k")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xuqvo"]
 particle_flag_disable_z = true
-direction = Vector3(40, 0, 0)
-initial_velocity_min = 0.5
-initial_velocity_max = 1.0
+emission_shape_scale = Vector3(1, 100, 1)
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+direction = Vector3(5, 0, 0)
+spread = 0.0
+initial_velocity_min = 35.29
+initial_velocity_max = 145.59
 gravity = Vector3(0, 0.5, 0)
+scale_min = 2.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_kq58d")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yaehf"]
 shader = ExtResource("13_2cqfq")
@@ -110,6 +119,7 @@ offset_right = -922.0
 offset_bottom = -501.0
 
 [node name="Sky" type="TextureRect" parent="Background"]
+z_index = -10
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -117,6 +127,7 @@ texture = ExtResource("1_82xsv")
 metadata/_edit_lock_ = true
 
 [node name="Buildings" type="TextureRect" parent="Background"]
+z_index = -3
 layout_mode = 0
 offset_left = 5.0
 offset_top = -2.0
@@ -127,13 +138,13 @@ metadata/_edit_lock_ = true
 
 [node name="DustParticles" type="GPUParticles2D" parent="Background"]
 z_index = 10
-position = Vector2(647, 295)
-amount = 32
-amount_ratio = 0.6234
+position = Vector2(-42, 494)
+amount = 64
+amount_ratio = 0.4
 texture = SubResource("GradientTexture2D_1u8w0")
-lifetime = 11.45
+lifetime = 4.0
 preprocess = 2.44
-randomness = 0.17
+randomness = 0.23
 process_material = SubResource("ParticleProcessMaterial_a6jrf")
 
 [node name="Ground" type="TextureRect" parent="Background"]
@@ -143,11 +154,14 @@ offset_bottom = 40.0
 texture = ExtResource("3_ryguw")
 metadata/_edit_lock_ = true
 
-[node name="Fog" type="GPUParticles2D" parent="Background"]
-position = Vector2(547, 237)
-amount = 20
-texture = SubResource("GradientTexture2D_a6jrf")
-lifetime = 10.35
+[node name="Clouds" type="GPUParticles2D" parent="Background"]
+z_index = -1
+position = Vector2(-164, 334)
+amount = 32
+amount_ratio = 0.6688
+texture = ExtResource("4_lswn8")
+lifetime = 25.0
+preprocess = 1.51
 process_material = SubResource("ParticleProcessMaterial_xuqvo")
 
 [node name="Node2d" type="Node2D" parent="."]
@@ -156,14 +170,14 @@ process_material = SubResource("ParticleProcessMaterial_xuqvo")
 
 [node name="Foreground" type="Sprite2D" parent="Node2d/Node"]
 z_index = 1
-position = Vector2(0, 328)
+position = Vector2(0, 332)
 texture = ExtResource("4_lquwl")
 
 [node name="Background2" type="Sprite2D" parent="Node2d/Node/Foreground"]
 z_index = -4
 position = Vector2(0, 2.5)
 scale = Vector2(1, 1.0046296)
-texture = ExtResource("3_1bvp3")
+texture = ExtResource("6_a6jrf")
 
 [node name="TetrisGrid" type="Node2D" parent="Node2d" node_paths=PackedStringArray("wipeSprite", "placeSound", "musicPlayer", "hookController", "scorer", "nextPreview")]
 position = Vector2(-578, -430)
