@@ -4,6 +4,21 @@ using System;
 public partial class TetrisGrid : Node2D
 {
 	[Export]
+	private int totalScore;
+	[Export]
+	private Label clockLabel;
+
+	[Export]
+	private double lastMinuteDelay = 0.25;  
+	private bool lastMinute;
+
+	[Export(PropertyHint.File, "*.tscn")]
+	private string menuScene = "res://scripts/main_menu.tscn";
+
+	private double clockSeconds;  
+	private bool timeUp;
+
+	[Export]
 	private Sprite2D wipeSprite;
 
 	[Export]
@@ -102,7 +117,7 @@ public partial class TetrisGrid : Node2D
 		wipeSprite.ZIndex = 100;
 		wipeSprite.Position = new Vector2(-cellSize, -boardSize.Y - 4 * cellSize);   //Intial position
 
-		curCooldown = delay;
+		curCooldown = lastMinute ? lastMinuteDelay : delay;
 		currentBlock = GetNextBlock();
 		currentBlock.Visible = true;
 
@@ -115,12 +130,14 @@ public partial class TetrisGrid : Node2D
 
 		musicPlayer.Stream = music[0];
 		musicPlayer.Play();
+		musicPlayer.Finished += () => musicPlayer.Play();
 	}
 
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+    	UpdateClock(delta);
 		if (wiping) return;
 		if (curCooldown <= 0)
 		{
@@ -189,7 +206,7 @@ public partial class TetrisGrid : Node2D
 
 	private void FallBlock()
 	{
-		curCooldown = delay;
+		curCooldown = lastMinute ? lastMinuteDelay : delay;
 		foreach (Vector2I coord in currentBlock.gridCoords())
 		{
 			int newY = coord.Y + 1;
@@ -250,6 +267,7 @@ public partial class TetrisGrid : Node2D
 			}
 		}
 		scorer.UpdateScore(score);
+		totalScore += score;
 	}
 
 	private Block GetNextBlock()
@@ -355,7 +373,34 @@ public partial class TetrisGrid : Node2D
 		{
 			// wipeSprite.Visible = false;
 			wiping = false;
-			curCooldown = delay;
+			curCooldown = lastMinute ? lastMinuteDelay : delay;
+			
 		}));
 	}
+
+
+	private void UpdateClock(double delta){
+    if (timeUp) return;
+
+    clockSeconds += delta;
+
+    double gameMinutes = 10* 60 + clockSeconds * 3;
+	lastMinute = gameMinutes >= 15 * 60;   
+    if (gameMinutes >= 17 * 60){
+		scorer.UpdateScore(10);  // final update
+        timeUp = true;
+    	GetTree().Root.SetMeta("final_score", totalScore);
+		GetTree().ChangeSceneToFile(menuScene);
+		
+        return;
+    }
+
+    int hour = (int)(gameMinutes / 60);
+    int minute = (int)(gameMinutes % 60);
+    int hour12 = hour % 12 == 0 ? 12 : hour % 12;
+    string suffix = hour < 12 ? "AM" : "PM";
+
+    clockLabel.Text = $"{hour12}:{minute:00} {suffix}";
+	}
 }
+

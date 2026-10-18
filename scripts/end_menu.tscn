@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://d2dp08yhfkgye"]
+
+[ext_resource type="Script" uid="uid://dw1sfnod57q4u" path="res://scripts/main_menu.gd" id="1_ptpsf"]
+[ext_resource type="Texture2D" uid="uid://cdvbp16et0xfa" path="res://assets/HUD/animated-moscow-title-card-from-the-tetris-movie-2207550534.jpg" id="2_broi1"]
+[ext_resource type="FontFile" uid="uid://cku8v3cj12u6" path="res://assets/HUD/KyrillaSansSerif-Bold.ttf" id="3_0pbw7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyibd"]
+texture = ExtResource("2_broi1")
+modulate_color = Color(0.37, 0.37, 0.37, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qop8"]
+bg_color = Color(0.5882353, 0.2627451, 0.22352941, 1)
+corner_radius_top_right = 44
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 44
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brnl1"]
+bg_color = Color(0.28, 0.104906656, 0.09239999, 1)
+corner_radius_top_right = 44
+corner_radius_bottom_left = 44
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyejb"]
+bg_color = Color(0.4117647, 0.12941177, 0.09019608, 1)
+corner_radius_top_right = 44
+corner_radius_bottom_left = 44
+corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyejb"]
+
+[node name="EndMenu" type="Control" unique_id=184564733]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ptpsf")
+
+[node name="Panel" type="Panel" parent="." unique_id=626080593]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_lyibd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=619437810]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -80.0
+offset_right = 241.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=451870934]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pbw7")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_brnl1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cyejb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
+text = "START
+JOB"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1152799916]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_0pbw7")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_brnl1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cyejb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
+text = "TERMINATE
+JOB"
+
+[node name="score" type="Label" parent="VBoxContainer/Button2" unique_id=1682974482]
+layout_mode = 0
+offset_left = -36.0
+offset_top = -282.0
+offset_right = 601.0
+offset_bottom = -184.0
+theme_override_fonts/font = ExtResource("3_0pbw7")
+theme_override_font_sizes/font_size = 83
+text = "SOVIET TETRIS"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="exit_button"]
