@@ -12,7 +12,7 @@ public partial class TetrisGrid : Node2D
 
 
 
-	private Block currentBlock;
+	public Block currentBlock;
 
 	private Block _nextBlock;
 	private Block nextBlock
@@ -28,6 +28,15 @@ public partial class TetrisGrid : Node2D
 
 	[Export]
 	private AudioStreamPlayer placeSound;
+
+	[Export]
+	private AudioStreamPlayer musicPlayer;
+
+	[Export]
+	private Godot.Collections.Array<AudioStreamWav> music; 
+
+	[Export]
+	private HookPosition hookController;
 	
 	
 	private double curCooldown;
@@ -96,6 +105,9 @@ public partial class TetrisGrid : Node2D
 		}
 
 		nextBlock = GetNextBlock();
+
+		musicPlayer.Stream = music[0];
+		musicPlayer.Play();
 	}
 	
 
@@ -178,6 +190,7 @@ public partial class TetrisGrid : Node2D
 		Node2D parent = currentBlock.GetParent<Node2D>();
 
 		parent.Position += new Vector2(0, cellSize);
+		hookController.UpdateHookPosition(parent);
 		currentBlock.offsetInternal += new Vector2I(0, 1);
 	}
 	
@@ -195,6 +208,8 @@ public partial class TetrisGrid : Node2D
 			grid[coord.Y, coord.X] = 1;	
 		}
 		currentBlock = nextBlock;
+	
+		hookController.UpdateHookPosition(currentBlock.GetParent<Node2D>());
 		currentBlock.Visible = true;
 		nextBlock = GetNextBlock();
 	}
@@ -202,7 +217,9 @@ public partial class TetrisGrid : Node2D
 	private void ResetGrid(){
 		GetTree().CallGroup("placed", "queue_free");
 
+
 		currentBlock = nextBlock;
+		hookController.UpdateHookPosition(currentBlock.GetParent<Node2D>());
 		currentBlock.Visible = true;
 		nextBlock = GetNextBlock();
 
@@ -264,6 +281,7 @@ public partial class TetrisGrid : Node2D
 		Node2D parent = currentBlock.GetParent<Node2D>();
 		parent.Rotate(Mathf.Pi / 2);
 		parent.Position += delta * cellSize;  
+		hookController.UpdateHookPosition(parent);
 	}
 
 	
@@ -280,11 +298,14 @@ public partial class TetrisGrid : Node2D
 		}
 		Node2D parent = currentBlock.GetParent<Node2D>();
 		parent.Position += new Vector2(cellSize * dir, 0);
+		hookController.UpdateHookPosition(parent);
 		currentBlock.offsetInternal += new Vector2I(dir, 0);
 	}
 
 	private void StartWipe(){
 		currentBlock = null;
+		hookController.UpdateHookPosition(null);
+
 		wiping = true;
 		heldMoveDirection = 0;
 		moveRepeatTimer = 0; //Pauses
