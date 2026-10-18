@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dx26y46pwb8l6"]
+[gd_scene load_steps=0 format=3 uid="uid://dx26y46pwb8l6"]
 
 [ext_resource type="Texture2D" uid="uid://d12ulipyoa1fm" path="res://objects/q_gramophone.png" id="1_r5njc"]
 [ext_resource type="Script" uid="uid://dubnctxlqwxl7" path="res://scripts/Block.cs" id="2_mlnm8"]

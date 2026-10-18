@@ -190,7 +190,7 @@ states/idle/position = Vector2(472.29633, 82.666664)
 states/send_objects/node = SubResource("AnimationNodeAnimation_wvuwj")
 states/send_objects/position = Vector2(472.00003, 167.55554)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_mcu1n"), "idle", "send_objects", SubResource("AnimationNodeStateMachineTransition_eqaun"), "send_objects", "idle", SubResource("AnimationNodeStateMachineTransition_gk2tm"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_jtdff")]
-graph_offset = Vector2(-4, 3)
+graph_offset = Vector2(35, -31)
 
 [sub_resource type="Animation" id="Animation_r7y07"]
 length = 0.001

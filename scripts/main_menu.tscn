@@ -1,47 +1,47 @@
-[gd_scene format=3 uid="uid://b18kfptey75ss"]
+[gd_scene load_steps=13 format=3 uid="uid://b18kfptey75ss"]
 
 [ext_resource type="FontFile" uid="uid://cku8v3cj12u6" path="res://assets/HUD/KyrillaSansSerif-Bold.ttf" id="1_brnl1"]
 [ext_resource type="Script" uid="uid://dw1sfnod57q4u" path="res://scripts/main_menu.gd" id="1_cyejb"]
+[ext_resource type="Texture2D" uid="uid://xtgj5x3msxso" path="res://UI/menu.png" id="2_beodu"]
 [ext_resource type="Shader" uid="uid://baq62qt13ikri" path="res://crt_monitor.gdshader" id="2_onb27"]
-[ext_resource type="Texture2D" uid="uid://cdvbp16et0xfa" path="res://assets/HUD/animated-moscow-title-card-from-the-tetris-movie-2207550534.jpg" id="2_qqsp2"]
-[ext_resource type="FontFile" uid="uid://ytf7kqbfpxoq" path="res://UI/the-bomb-sound/The Bomb Sound.otf" id="4_lyibd"]
+[ext_resource type="FontFile" uid="uid://dv2ojnhvbwgki" path="res://UI/the-bomb-sound/The Bomb Sound.otf" id="4_lyibd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyibd"]
-texture = ExtResource("2_qqsp2")
-modulate_color = Color(0.37, 0.37, 0.37, 1)
+texture = ExtResource("2_beodu")
+modulate_color = Color(0.7443834, 0.7362309, 0.7140937, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_onb27"]
 shader = ExtResource("2_onb27")
-shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/resolution = Vector2(512, 360)
 shader_parameter/scan_line_amount = 1.0
-shader_parameter/warp_amount = 0.1
-shader_parameter/noise_amount = 0.03
-shader_parameter/interference_amount = 0.2
-shader_parameter/grille_amount = 0.1
+shader_parameter/warp_amount = 0.3010000142975
+shader_parameter/noise_amount = 0.0
+shader_parameter/interference_amount = 0.1200000057
+shader_parameter/grille_amount = 0.0
 shader_parameter/grille_size = 1.0
-shader_parameter/vignette_amount = 0.6
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/aberation_amount = 0.5
-shader_parameter/roll_line_amount = 0.3
-shader_parameter/roll_speed = 1.0
-shader_parameter/scan_line_strength = -8.0
-shader_parameter/pixel_strength = -2.0
+shader_parameter/vignette_amount = 0.5010000237975
+shader_parameter/vignette_intensity = 0.6430000305425
+shader_parameter/aberation_amount = 0.3570000169575
+shader_parameter/roll_line_amount = 0.0750000035625
+shader_parameter/roll_speed = 1.14000043415
+shader_parameter/scan_line_strength = -6.08799971918
+shader_parameter/pixel_strength = -1.1719998656700001
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qop8"]
-bg_color = Color(0.5882353, 0.2627451, 0.22352941, 1)
+bg_color = Color(0, 0, 0, 0)
 corner_radius_top_right = 44
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 44
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brnl1"]
-bg_color = Color(0.28, 0.104906656, 0.09239999, 1)
+bg_color = Color(1, 1, 1, 0.8509804)
 corner_radius_top_right = 44
 corner_radius_bottom_left = 44
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyejb"]
-bg_color = Color(0.4117647, 0.12941177, 0.09019608, 1)
+bg_color = Color(0.9504, 0.95552, 0.96, 0.41568628)
 corner_radius_top_right = 44
 corner_radius_bottom_left = 44
 corner_detail = 1
@@ -49,9 +49,10 @@ corner_detail = 1
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyejb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onb27"]
-bg_color = Color(0.49803922, 0.36078432, 0.22352941, 1)
+bg_color = Color(0.01, 0.009835, 9.99999e-05, 1)
+shadow_size = 27
 
-[node name="MainMenu" type="Control" unique_id=184564733]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,7 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cyejb")
 
-[node name="Panel" type="Panel" parent="." unique_id=626080593]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,40 +70,41 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_lyibd")
 
-[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=1351946064]
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+z_index = 5
 material = SubResource("ShaderMaterial_onb27")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1924.0001
+offset_top = 2.000001
+offset_right = 1924.0002
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 1.5707964
+scale = Vector2(0.5640254, 1.7831702)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=619437810]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -528.0
-offset_top = -33.0
-offset_right = -26.0
-offset_bottom = 191.0
+offset_left = 404.0
+offset_top = 126.0
+offset_right = 906.0
+offset_bottom = 482.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1682974482]
+[node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_brnl1")
-theme_override_font_sizes/font_size = 83
-text = "SOVIET TETRIS"
-
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=451870934]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_brnl1")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_brnl1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cyejb")
@@ -110,7 +112,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
 text = "START
 JOB"
 
-[node name="Button4" type="Button" parent="VBoxContainer" unique_id=1728414539]
+[node name="Button4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_brnl1")
 theme_override_font_sizes/font_size = 38
@@ -122,7 +124,7 @@ text = "CREDITS
 "
 vertical_icon_alignment = 2
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1152799916]
+[node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_brnl1")
 theme_override_font_sizes/font_size = 38
@@ -133,7 +135,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
 text = "TERMINATE
 JOB"
 
-[node name="Panel2" type="Panel" parent="." unique_id=1158695599]
+[node name="Panel2" type="Panel" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -141,21 +143,30 @@ anchor_left = 0.2
 anchor_top = 0.2
 anchor_right = 0.8
 anchor_bottom = 0.8
+offset_left = -69.0
+offset_top = -160.0
+offset_right = 35.0
+offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_onb27")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2" unique_id=826964217]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -358.0
+offset_top = -504.0
+offset_right = -45.0
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.2476583, 1.6234075)
 
-[node name="Label5" type="Label" parent="Panel2/VBoxContainer2" unique_id=1849376173]
+[node name="Label5" type="Label" parent="Panel2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_lyibd")
 theme_override_font_sizes/font_size = 75
@@ -163,14 +174,14 @@ text = "Credits
 "
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="Panel2/VBoxContainer2" unique_id=1836448377]
+[node name="Label4" type="Label" parent="Panel2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_lyibd")
 theme_override_font_sizes/font_size = 50
 text = "Programming"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Panel2/VBoxContainer2" unique_id=1122700748]
+[node name="Label" type="Label" parent="Panel2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_lyibd")
 theme_override_font_sizes/font_size = 25
@@ -179,28 +190,40 @@ Person
 Another person"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Panel2/VBoxContainer2" unique_id=1362616897]
+[node name="space" type="Label" parent="Panel2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lyibd")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_lyibd")
 theme_override_font_sizes/font_size = 50
 text = "Art"
 horizontal_alignment = 1
 
-[node name="Label7" type="Label" parent="Panel2/VBoxContainer2" unique_id=939953607]
+[node name="Label7" type="Label" parent="Panel2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_lyibd")
 theme_override_font_sizes/font_size = 25
-text = "SO many people"
+text = "Pinknutnut"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Panel2/VBoxContainer2" unique_id=409939661]
+[node name="space2" type="Label" parent="Panel2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lyibd")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Panel2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_lyibd")
 theme_override_font_sizes/font_size = 50
 text = "Music"
 horizontal_alignment = 1
 
-[node name="Label8" type="Label" parent="Panel2/VBoxContainer2" unique_id=1739281237]
+[node name="Label8" type="Label" parent="Panel2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_lyibd")
 theme_override_font_sizes/font_size = 25
@@ -209,7 +232,7 @@ text = "Keilaniemi
 "
 horizontal_alignment = 1
 
-[node name="Button2" type="Button" parent="Panel2/VBoxContainer2" unique_id=1829663572]
+[node name="Button2" type="Button" parent="Panel2/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")

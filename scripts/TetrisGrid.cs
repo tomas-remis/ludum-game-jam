@@ -100,8 +100,8 @@ public partial class TetrisGrid : Node2D
 					cellSize
 				);
 
-				DrawRect(rect, new Color(0, 0, 1, 0.25f), true);
-				DrawRect(rect, Colors.Blue, false, 1.0f);
+				DrawRect(rect, new Color(0, 0, 0, 0.4f), true);
+				DrawRect(rect, new Color(1, 1, 1, 0.2f), false, 3.0f); //outline????? 
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d3xa3rd5fkxu2"]
+[gd_scene load_steps=0 format=3 uid="uid://d3xa3rd5fkxu2"]
 
 [ext_resource type="Script" uid="uid://dubnctxlqwxl7" path="res://scripts/Block.cs" id="2_ch35b"]
 
