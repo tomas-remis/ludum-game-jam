@@ -62,7 +62,7 @@ public partial class TetrisGrid : Node2D
 	public override void _Ready()
 	{
 		curCooldown = delay;
-		currentBlock = GetNextBlock(1);
+		currentBlock = GetNextBlock(4);
 		currentBlock.Visible = true;
 		nextBlock = GetNextBlock(1);
 	
@@ -95,10 +95,9 @@ public partial class TetrisGrid : Node2D
 	private void HardDrop()
 	{
 		Block dropping = currentBlock;
-		// FallBlock calls PlaceBlock when it hits something, which swaps currentBlock.
-		// So keep falling until the current block is no longer the one we started with.
 		while (currentBlock == dropping)
-			FallBlock();
+			FallBlock(); //This was pure torture for me 4 years ago. 
+			
 	}
 	private void HandleHorizontalInput(double delta)
 	{

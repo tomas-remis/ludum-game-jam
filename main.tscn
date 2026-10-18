@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://q8pnpgng34au" path="res://scripts/TetrisGrid.cs" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://df01el84vckul" path="res://scenes/2x2 block.tscn" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://danphosowup4f" path="res://UI/container_back.png" id="3_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://bjx2ata1p6r7n" path="res://UI/container_front.png" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cjxckkmwbdn3n" path="res://UI/container_back.png" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dki52hagifb1s" path="res://UI/container_front.png" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dy4ennb6ypkq2" path="res://scenes/t_car.tscn" id="5_7mycd"]
 [ext_resource type="Script" uid="uid://cebeif7422st7" path="res://scripts/Scorer.cs" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://y7hxnqnl1bwa" path="res://scenes/can.tscn" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://cpgdkdflbovkf" path="res://scenes/pixar.tscn" id="7_5vw27"]
+[ext_resource type="PackedScene" uid="uid://if66broxpum3" path="res://scenes/chair.tscn" id="8_kek77"]
 
 [node name="Node2D" type="Node2D" unique_id=200043499]
 
@@ -26,7 +28,7 @@ texture = ExtResource("4_lquwl")
 position = Vector2(-578, -498)
 script = ExtResource("1_ig7tw")
 cellSize = 60.0
-blocks = Array[PackedScene]([ExtResource("2_0xm2m"), ExtResource("5_7mycd"), ExtResource("6_272bh")])
+blocks = Array[PackedScene]([ExtResource("2_0xm2m"), ExtResource("5_7mycd"), ExtResource("6_272bh"), ExtResource("7_5vw27"), ExtResource("8_kek77")])
 scorer = NodePath("../../UI/Scorer")
 
 [node name="UI" type="Control" parent="." unique_id=1403465996]

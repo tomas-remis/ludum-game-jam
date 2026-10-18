@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://cpgdkdflbovkf"]
+[gd_scene format=3 uid="uid://if66broxpum3"]
 
-[ext_resource type="Texture2D" uid="uid://c0ri1aa2mqy4d" path="res://objects/T_car.png" id="1_3fp06"]
+[ext_resource type="Texture2D" uid="uid://p7dpk0gdyufn" path="res://objects/Z_broken_chair.png" id="1_3fp06"]
 [ext_resource type="Script" uid="uid://dubnctxlqwxl7" path="res://scripts/Block.cs" id="2_hxd06"]
 
-[node name="TCar" type="Node2D" unique_id=1528216000]
+[node name="chair" type="Node2D" unique_id=1528216000]
 
 [node name="Pivot" type="Node2D" parent="." unique_id=1019497440]
 
@@ -12,5 +12,5 @@ position = Vector2(-171, -62)
 texture = ExtResource("1_3fp06")
 centered = false
 script = ExtResource("2_hxd06")
-coords = Array[Vector2i]([Vector2i(0, 1), Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2), Vector2i(2, 0), Vector2i(2, 1), Vector2i(3, 0), Vector2i(3, 1), Vector2i(4, 0), Vector2i(4, 1), Vector2i(4, 2), Vector2i(5, 1)])
-pivot = Vector2(3, 1.5)
+coords = Array[Vector2i]([Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 0), Vector2i(2, 1), Vector2i(3, 0), Vector2i(3, 1)])
+pivot = Vector2(2, 1)
