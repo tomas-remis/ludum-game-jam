@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b18kfptey75ss"]
+[gd_scene load_steps=14 format=3 uid="uid://b18kfptey75ss"]
 
-[ext_resource type="FontFile" uid="uid://cku8v3cj12u6" path="res://assets/HUD/KyrillaSansSerif-Bold.ttf" id="1_brnl1"]
 [ext_resource type="Script" uid="uid://dw1sfnod57q4u" path="res://scripts/main_menu.gd" id="1_cyejb"]
 [ext_resource type="Texture2D" uid="uid://xtgj5x3msxso" path="res://UI/menu.png" id="2_beodu"]
 [ext_resource type="Shader" uid="uid://baq62qt13ikri" path="res://crt_monitor.gdshader" id="2_onb27"]
+[ext_resource type="FontFile" uid="uid://c2gusyk04oyh2" path="res://UI/sf-digital-readout/SFDigitalReadout-Heavy.ttf" id="4_beodu"]
 [ext_resource type="FontFile" uid="uid://dv2ojnhvbwgki" path="res://UI/the-bomb-sound/The Bomb Sound.otf" id="4_lyibd"]
+[ext_resource type="FontFile" uid="uid://bcghe5by576ac" path="res://UI/sf-digital-readout/SFDigitalReadout-HeavyObliq.ttf" id="5_pi3ub"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyibd"]
 texture = ExtResource("2_beodu")
@@ -25,7 +26,7 @@ shader_parameter/aberation_amount = 0.3570000169575
 shader_parameter/roll_line_amount = 0.0750000035625
 shader_parameter/roll_speed = 1.14000043415
 shader_parameter/scan_line_strength = -6.08799971918
-shader_parameter/pixel_strength = -1.1719998656700001
+shader_parameter/pixel_strength = -1.17199986567
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qop8"]
 bg_color = Color(0, 0, 0, 0)
@@ -103,19 +104,18 @@ theme_override_constants/separation = 40
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_brnl1")
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("4_beodu")
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_brnl1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cyejb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
-text = "START
-JOB"
+text = "START"
 
 [node name="Button4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_brnl1")
-theme_override_font_sizes/font_size = 38
+theme_override_fonts/font = ExtResource("5_pi3ub")
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_brnl1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cyejb")
@@ -126,14 +126,13 @@ vertical_icon_alignment = 2
 
 [node name="Button2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_brnl1")
-theme_override_font_sizes/font_size = 38
+theme_override_fonts/font = ExtResource("5_pi3ub")
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxFlat_0qop8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_brnl1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cyejb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
-text = "TERMINATE
-JOB"
+text = "EXIT"
 
 [node name="Panel2" type="Panel" parent="."]
 visible = false

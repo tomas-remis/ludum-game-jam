@@ -7,7 +7,7 @@ public partial class Scorer : Label
 	private int score = 0;
 	public override void _Ready()
 	{
-		Text = "Score: 0";
+		Text = "Score   0";
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,6 +19,6 @@ public partial class Scorer : Label
 	public void UpdateScore(int addedScore)
 	{
 		score += addedScore;
-		Text = "Score: " + addedScore.ToString();
+		Text = "Score     " + addedScore.ToString();
 	}
 }
