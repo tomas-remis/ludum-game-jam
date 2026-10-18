@@ -2,12 +2,30 @@
 
 [ext_resource type="FontFile" uid="uid://cku8v3cj12u6" path="res://assets/HUD/KyrillaSansSerif-Bold.ttf" id="1_brnl1"]
 [ext_resource type="Script" uid="uid://dw1sfnod57q4u" path="res://scripts/main_menu.gd" id="1_cyejb"]
+[ext_resource type="Shader" uid="uid://baq62qt13ikri" path="res://crt_monitor.gdshader" id="2_onb27"]
 [ext_resource type="Texture2D" uid="uid://cdvbp16et0xfa" path="res://assets/HUD/animated-moscow-title-card-from-the-tetris-movie-2207550534.jpg" id="2_qqsp2"]
 [ext_resource type="FontFile" uid="uid://ytf7kqbfpxoq" path="res://UI/the-bomb-sound/The Bomb Sound.otf" id="4_lyibd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lyibd"]
 texture = ExtResource("2_qqsp2")
 modulate_color = Color(0.37, 0.37, 0.37, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onb27"]
+shader = ExtResource("2_onb27")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qop8"]
 bg_color = Color(0.5882353, 0.2627451, 0.22352941, 1)
@@ -50,6 +68,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_lyibd")
+
+[node name="ColorRect" type="ColorRect" parent="Panel" unique_id=1351946064]
+material = SubResource("ShaderMaterial_onb27")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=619437810]
 layout_mode = 1

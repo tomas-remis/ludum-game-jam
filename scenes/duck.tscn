@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dr2hn7825m6yp"]
+
+[ext_resource type="Texture2D" uid="uid://ciuqc06xr2pre" path="res://objects/Z_rubber_duck.png" id="1_tils5"]
+[ext_resource type="Script" uid="uid://dubnctxlqwxl7" path="res://scripts/Block.cs" id="2_ircvx"]
+
+[node name="Can" type="Node2D" unique_id=1160668052]
+
+[node name="Pivot" type="Node2D" parent="." unique_id=282541383]
+
+[node name="Sprite" type="Sprite2D" parent="Pivot" unique_id=403182031]
+position = Vector2(-68, -68)
+texture = ExtResource("1_tils5")
+centered = false
+script = ExtResource("2_ircvx")
+coords = Array[Vector2i]([Vector2i(0, 0)])
+pivot = Vector2(0.5, 0.5)

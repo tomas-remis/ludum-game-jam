@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dubnctxlqwxl7" path="res://scripts/Block.cs" id="1_ajouj"]
 [ext_resource type="Texture2D" uid="uid://djwq5akx7kl22" path="res://objects/O_tire.png" id="1_kywry"]
 
-[node name="Chair" type="Node2D" unique_id=1021166219]
+[node name="2x2" type="Node2D" unique_id=1021166219]
 
 [node name="Pivot" type="Node2D" parent="." unique_id=391892235]
 
