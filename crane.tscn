@@ -1,0 +1,461 @@
+[gd_scene load_steps=17 format=3 uid="uid://yoa1h74ltfvk"]
+
+[ext_resource type="Texture2D" uid="uid://gdd85pjpjsfg" path="res://UI/crane_reference.png" id="1_makmw"]
+[ext_resource type="Texture2D" uid="uid://ds2hm44vghnio" path="res://UI/crane_text.png" id="2_h1ok4"]
+
+[sub_resource type="Animation" id="Animation_makmw"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JibSkeleton/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1376, 586), Vector2(1380, 602), Vector2(1376, 586)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JibSkeleton/Bottom:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("JibSkeleton/Bottom/Top:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-285, -575), Vector2(-296, -518), Vector2(-285, -575)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("JibSkeleton/Bottom/Top:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-2.346233, -2.346233, -2.346233]
+}
+
+[sub_resource type="Animation" id="Animation_h1ok4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JibSkeleton/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1376, 586)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JibSkeleton/Bottom:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("JibSkeleton/Bottom/Top:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-285, -575)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("JibSkeleton/Bottom/Top:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.346233]
+}
+
+[sub_resource type="Animation" id="Animation_wowlp"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JibSkeleton/Bottom:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1376, 586), Vector2(1320, 602), Vector2(1320, 602), Vector2(1376, 586)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JibSkeleton/Bottom:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.21107444, -0.21107444, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("JibSkeleton/Bottom/Top:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-285, -575), Vector2(-234, -483), Vector2(-234, -483), Vector2(-285, -575)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("JibSkeleton/Bottom/Top:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.39999998, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-2.346233, -2.346233, -2.346233, -2.346233]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vglqe"]
+_data = {
+&"RESET": SubResource("Animation_h1ok4"),
+&"idle": SubResource("Animation_makmw"),
+&"send_objects": SubResource("Animation_wowlp")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nsdvl"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wvuwj"]
+animation = &"send_objects"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mcu1n"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eqaun"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gk2tm"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jtdff"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1ewwg"]
+states/Start/position = Vector2(210.66667, 91.18519)
+states/idle/node = SubResource("AnimationNodeAnimation_nsdvl")
+states/idle/position = Vector2(472.29633, 82.666664)
+states/send_objects/node = SubResource("AnimationNodeAnimation_wvuwj")
+states/send_objects/position = Vector2(472.00003, 167.55554)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_mcu1n"), "idle", "send_objects", SubResource("AnimationNodeStateMachineTransition_eqaun"), "send_objects", "idle", SubResource("AnimationNodeStateMachineTransition_gk2tm"), "idle", "End", SubResource("AnimationNodeStateMachineTransition_jtdff")]
+
+[sub_resource type="Animation" id="Animation_d4dpo"]
+resource_name = "idle"
+length = 0.500025
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarSkeleton/Tire:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1644, 896), Vector2(1640, 907), Vector2(1644, 896)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CarSkeleton/Tire:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CarSkeleton/Tire/Body:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-79, -141), Vector2(-78, -130), Vector2(-79, -141)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CarSkeleton/Tire/Body:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CarSkeleton/Tire/Body/Neck:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-4, -144), Vector2(4, -125), Vector2(-4, -144)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CarSkeleton/Tire/Body/Neck:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.026365876, -0.026365876, -0.026365876]
+}
+
+[sub_resource type="Animation" id="Animation_r7y07"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarSkeleton/Tire:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1644, 896)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CarSkeleton/Tire:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CarSkeleton/Tire/Body:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-79, -141)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CarSkeleton/Tire/Body:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CarSkeleton/Tire/Body/Neck:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -144)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CarSkeleton/Tire/Body/Neck:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.026365876]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wowlp"]
+_data = {
+&"RESET": SubResource("Animation_r7y07"),
+&"idle": SubResource("Animation_d4dpo")
+}
+
+[node name="Crane" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CraneReference" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(961, 538)
+texture = ExtResource("1_makmw")
+
+[node name="Jib" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Hydraulic" type="Polygon2D" parent="Jib"]
+position = Vector2(-380.99997, 121.000015)
+rotation = -0.2215606
+texture = ExtResource("2_h1ok4")
+skeleton = NodePath("../JibSkeleton")
+polygon = PackedVector2Array(1509.4501, 457.64993, 1493.1151, 975.915, 1620.8251, 975.915, 1586.67, 445.76993)
+uv = PackedVector2Array(1509.4501, 457.64993, 1493.1151, 975.915, 1620.8251, 975.915, 1586.67, 445.76993)
+polygons = [PackedInt32Array(0, 3, 2, 1)]
+bones = ["Bottom", PackedFloat32Array(0, 1, 1, 0), "Bottom/Top", PackedFloat32Array(0.45, 0, 0, 0.45)]
+
+[node name="Jib" type="Polygon2D" parent="Jib"]
+position = Vector2(-183.00002, 491.99994)
+rotation = -0.51121217
+texture = ExtResource("2_h1ok4")
+skeleton = NodePath("../JibSkeleton")
+polygon = PackedVector2Array(1324.9543, 85.49692, 1287.7333, 1022.7918, 1473.8387, 1010.94867, 1433.2339, 75.34572)
+uv = PackedVector2Array(1324.9543, 85.49692, 1287.7333, 1022.7918, 1473.8387, 1010.94867, 1433.2339, 75.34572)
+polygons = [PackedInt32Array(0, 3, 2, 1)]
+bones = ["Bottom", PackedFloat32Array(0, 1, 1, 0), "Bottom/Top", PackedFloat32Array(1, 0, 0, 1)]
+
+[node name="JibSkeleton" type="Skeleton2D" parent="Jib"]
+
+[node name="Bottom" type="Bone2D" parent="Jib/JibSkeleton"]
+position = Vector2(1376, 586)
+rest = Transform2D(1, 0, 0, 1, 1376, 586)
+
+[node name="Top" type="Bone2D" parent="Jib/JibSkeleton/Bottom"]
+position = Vector2(-285, -575)
+rotation = -2.346233
+rest = Transform2D(-0.7000279, -0.7141155, 0.7141155, -0.7000279, -285, -575)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Jib"]
+libraries = {
+&"": SubResource("AnimationLibrary_vglqe")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Jib/AnimationPlayer"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_1ewwg")
+anim_player = NodePath("..")
+
+[node name="Car" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tires" type="Polygon2D" parent="Car"]
+position = Vector2(1140, -11)
+texture = ExtResource("2_h1ok4")
+skeleton = NodePath("../CarSkeleton")
+polygon = PackedVector2Array(218.69868, 837.2108, 217.81136, 1075.9036, 800.7895, 1067.0303, 759.08484, 816.8021)
+uv = PackedVector2Array(218.69868, 837.2108, 217.81136, 1075.9036, 800.7895, 1067.0303, 759.08484, 816.8021)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+bones = ["Tire", PackedFloat32Array(1, 1, 1, 1), "Tire/Body", PackedFloat32Array(0, 0, 0, 0), "Tire/Body/Neck", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Head" type="Polygon2D" parent="Car"]
+position = Vector2(1138, 313)
+texture = ExtResource("2_h1ok4")
+skeleton = NodePath("../CarSkeleton")
+polygon = PackedVector2Array(286.46313, 15.350262, 268.86313, 350.48367, 593.72986, 354.88367, 598.1299, 18.283596)
+uv = PackedVector2Array(286.46313, 15.350262, 268.86313, 350.48367, 593.72986, 354.88367, 598.1299, 18.283596)
+polygons = [PackedInt32Array(0, 3, 2, 1)]
+bones = ["Tire", PackedFloat32Array(0, 0, 0, 0), "Tire/Body", PackedFloat32Array(0, 0, 0, 0), "Tire/Body/Neck", PackedFloat32Array(1, 1, 1, 1)]
+
+[node name="Body" type="Polygon2D" parent="Car"]
+position = Vector2(1121, 198)
+texture = ExtResource("2_h1ok4")
+skeleton = NodePath("../CarSkeleton")
+polygon = PackedVector2Array(294.65903, 377.08508, 128.03061, 476.1189, 60.436066, 535.85364, 109.16702, 762.2167, 299.3749, 782.6523, 324.52634, 689.90625, 426.70413, 702.482, 445.56772, 774.7924, 607.4802, 771.6485, 642.0635, 716.6297, 728.5216, 700.91003, 777.25256, 766.9326, 838.5592, 735.4933, 807.1199, 600.3042, 734.80945, 527.9938, 761.53284, 419.52814, 712.8019, 397.52063, 715.9458, 295.34283, 621.6279, 311.0625, 615.33997, 400.66455)
+uv = PackedVector2Array(294.65903, 377.08508, 128.03061, 476.1189, 60.436066, 535.85364, 109.16702, 762.2167, 299.3749, 782.6523, 324.52634, 689.90625, 426.70413, 702.482, 445.56772, 774.7924, 607.4802, 771.6485, 642.0635, 716.6297, 728.5216, 700.91003, 777.25256, 766.9326, 838.5592, 735.4933, 807.1199, 600.3042, 734.80945, 527.9938, 761.53284, 419.52814, 712.8019, 397.52063, 715.9458, 295.34283, 621.6279, 311.0625, 615.33997, 400.66455)
+polygons = [PackedInt32Array(1, 4, 3, 2), PackedInt32Array(4, 5, 0, 1), PackedInt32Array(5, 6, 19, 0), PackedInt32Array(7, 6, 9, 8), PackedInt32Array(9, 6, 19), PackedInt32Array(19, 14, 10, 9), PackedInt32Array(19, 16, 17, 18), PackedInt32Array(19, 14, 15, 16), PackedInt32Array(14, 13, 12, 11, 10)]
+bones = ["Tire", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Tire/Body", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Tire/Body/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="CarSkeleton" type="Skeleton2D" parent="Car"]
+
+[node name="Tire" type="Bone2D" parent="Car/CarSkeleton"]
+position = Vector2(1644, 896)
+rest = Transform2D(1, 0, 0, 1, 1644, 896)
+
+[node name="Body" type="Bone2D" parent="Car/CarSkeleton/Tire"]
+position = Vector2(-79, -141)
+rest = Transform2D(1, 0, 0, 1, -79, -141)
+
+[node name="Neck" type="Bone2D" parent="Car/CarSkeleton/Tire/Body"]
+position = Vector2(-4, -144)
+rotation = -0.026365876
+rest = Transform2D(0.99965245, -0.026362821, 0.026362821, 0.99965245, -4, -144)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Car"]
+libraries = {
+&"": SubResource("AnimationLibrary_wowlp")
+}
+autoplay = "idle"
