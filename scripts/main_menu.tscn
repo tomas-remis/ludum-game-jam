@@ -186,7 +186,7 @@ theme_override_fonts/font = ExtResource("4_lyibd")
 theme_override_font_sizes/font_size = 25
 text = "Sakibot
 Uncivilized Ghost
-Another person"
+TechWiz"
 horizontal_alignment = 1
 
 [node name="space" type="Label" parent="Panel2/VBoxContainer2" unique_id=1519187716]
