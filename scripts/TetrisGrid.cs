@@ -6,6 +6,9 @@ public partial class TetrisGrid : Node2D
 	private Block currentBlock;
 	private Block nextBlock;
 	private int[,] grid = new int[18, 15];
+
+	[Export]
+	private AudioStreamPlayer placeSound;
 	
 	
 	private double curCooldown;
@@ -147,6 +150,7 @@ public partial class TetrisGrid : Node2D
 	}
 	
 	private void PlaceBlock(){
+		placeSound?.Play();
 		foreach(Vector2I coord in currentBlock.gridCoords()){
 			if(coord.Y <= thresholdRow){
 				ResetGrid();
