@@ -4,8 +4,8 @@ using System;
 public partial class TetrisGrid : Node2D
 {
 	[Export]
-	private int totalScore;
 	private Label clockLabel;
+	private int totalScore;
 
 	[Export]
 	private double lastMinuteDelay = 0.25;  
@@ -14,11 +14,14 @@ public partial class TetrisGrid : Node2D
 	[Export(PropertyHint.File, "*.tscn")]
 	private string menuScene = "res://scripts/main_menu.tscn";
 
-	private double clockSeconds;  
+	private double clockSeconds = 80;  
 	private bool timeUp;
 
 	[Export]
 	private Sprite2D wipeSprite;
+
+	[Export]
+	private Texture2D gameOverWipeTex;
 
 	[Export]
 	private double wipeDuration = 2.0;
@@ -54,6 +57,7 @@ public partial class TetrisGrid : Node2D
 
 
 	private double curCooldown;
+	private bool musicSwapped = false;
 
 	[Export]
 	private double delay = 0.5;
@@ -77,6 +81,8 @@ public partial class TetrisGrid : Node2D
 
 	private double moveRepeatTimer;
 	private int heldMoveDirection;
+
+	private Action handler;
 
 
 
@@ -129,14 +135,16 @@ public partial class TetrisGrid : Node2D
 
 		musicPlayer.Stream = music[0];
 		musicPlayer.Play();
-		musicPlayer.Finished += () => musicPlayer.Play();
+
+		handler = () => musicPlayer.Play();
+		musicPlayer.Finished += handler;
 	}
 
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-    	UpdateClock(delta);
+		UpdateClock(delta);
 		if (wiping) return;
 		if (curCooldown <= 0)
 		{
@@ -341,7 +349,7 @@ public partial class TetrisGrid : Node2D
 		currentBlock.offsetInternal += new Vector2I(dir, 0);
 	}
 
-	private void StartWipe()
+	private void StartWipe(bool stayDown = false)
 	{
 		currentBlock = null;
 		hookController.UpdateHookPosition(null);
@@ -365,6 +373,11 @@ public partial class TetrisGrid : Node2D
 			.SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.InOut);
 		tween.TweenCallback(Callable.From(ResetGrid)); // clear while covered
 
+		if (stayDown)
+		{
+			return;
+		}
+
 		// slide out
 		tween.TweenProperty(wipeSprite, "position", new Vector2(0, -boardSize.Y), wipeDuration)
 			.SetDelay(0.5f).SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.InOut);
@@ -379,27 +392,37 @@ public partial class TetrisGrid : Node2D
 
 
 	private void UpdateClock(double delta){
-    if (timeUp) return;
+	if (timeUp) return;
 
-    clockSeconds += delta;
+	clockSeconds += delta;
 
-    double gameMinutes = 10* 60 + clockSeconds * 3;
-	lastMinute = gameMinutes >= 15 * 60;   
-    if (gameMinutes >= 17 * 60){
+	double gameMinutes = 10* 60 + clockSeconds * 3;
+	lastMinute = gameMinutes >= 15 * 60;
+
+	if(gameMinutes >= 17 * 60 - music[1].GetLength() * 3 && !musicSwapped){
+		musicSwapped = true;
+		musicPlayer.Stream = music[1];
+		musicPlayer.Play();
+		musicPlayer.Finished -= handler;
+	}
+
+	if (gameMinutes >= 17 * 60){
 		scorer.UpdateScore(10);  // final update
-        timeUp = true;
-    	GetTree().Root.SetMeta("final_score", totalScore);
-		GetTree().ChangeSceneToFile(menuScene);
-		
-        return;
-    }
+		timeUp = true;
+		GetTree().Root.SetMeta("final_score", totalScore);
+		wipeSprite.Texture = gameOverWipeTex;
+		StartWipe(true);
 
-    int hour = (int)(gameMinutes / 60);
-    int minute = (int)(gameMinutes % 60);
-    int hour12 = hour % 12 == 0 ? 12 : hour % 12;
-    string suffix = hour < 12 ? "AM" : "PM";
+		SceneTreeTimer timer = GetTree().CreateTimer(5f);
+		timer.Timeout += () => GetTree().ChangeSceneToFile(menuScene);
+		return;
+	}
 
-    clockLabel.Text = $"{hour12}:{minute:00} {suffix}";
+	int hour = (int)(gameMinutes / 60);
+	int minute = (int)(gameMinutes % 60);
+	int hour12 = hour % 12 == 0 ? 12 : hour % 12;
+	string suffix = hour < 12 ? "AM" : "PM";
+
+	clockLabel.Text = $"{hour12}:{minute:00} {suffix}";
 	}
 }
-
