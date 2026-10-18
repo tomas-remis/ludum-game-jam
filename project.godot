@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Old tech"
-run/main_scene="uid://b25x6761bs00g"
-config/features=PackedStringArray("4.6", "C#", "Forward Plus")
+run/main_scene="uid://bvjxfrx7ked1g"
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
