@@ -22,7 +22,7 @@ public partial class TetrisGrid : Node2D
 	private Sprite2D wipeSprite;
 
 	[Export]
-	private double wipeDuration = 2.0;
+	private double wipeDuration = 2.5;
 	private bool wiping;
 
 
@@ -113,9 +113,9 @@ public partial class TetrisGrid : Node2D
 		// place wiper at initial position
 		Vector2 boardSize = new Vector2(grid.GetLength(1), grid.GetLength(0)) * cellSize;
 		wipeSprite.Centered = false;
-		wipeSprite.Scale = boardSize / wipeSprite.Texture.GetSize();
+		wipeSprite.Scale = (boardSize + new Vector2(2, 6) * cellSize) / wipeSprite.Texture.GetSize();
 		wipeSprite.ZIndex = 100;
-		wipeSprite.Position = new Vector2(0, -boardSize.Y);   //Intial position
+		wipeSprite.Position = new Vector2(-cellSize, -boardSize.Y - 4 * cellSize);   //Intial position
 
 		curCooldown = lastMinute ? lastMinuteDelay : delay;
 		currentBlock = GetNextBlock();
@@ -345,7 +345,7 @@ public partial class TetrisGrid : Node2D
 	private void StartWipe()
 	{
 		currentBlock = null;
-		hookController.UpdateHookPosition(null);
+		hookController.UpdateHookPosition(this);
 
 		wiping = true;
 		heldMoveDirection = 0;
@@ -353,21 +353,21 @@ public partial class TetrisGrid : Node2D
 
 		Vector2 boardSize = new Vector2(grid.GetLength(1), grid.GetLength(0)) * cellSize;
 		wipeSprite.Centered = false;
-		wipeSprite.Scale = boardSize / wipeSprite.Texture.GetSize();
+		wipeSprite.Scale = (boardSize + new Vector2(2, 6) * cellSize) / wipeSprite.Texture.GetSize();
 		wipeSprite.ZIndex = 100;
-		wipeSprite.Position = new Vector2(0, -boardSize.Y);   //Intial position
+		wipeSprite.Position = new Vector2(-cellSize, -boardSize.Y - 4 * cellSize);   //Intial position
 
 		// wipeSprite.Visible = true;
 
 		var tween = CreateTween();
 
 		// slide in
-		tween.TweenProperty(wipeSprite, "position", Vector2.Zero, wipeDuration)
+		tween.TweenProperty(wipeSprite, "position", new Vector2(-cellSize, -6 * cellSize), wipeDuration)
 			.SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.InOut);
 		tween.TweenCallback(Callable.From(ResetGrid)); // clear while covered
 
 		// slide out
-		tween.TweenProperty(wipeSprite, "position", new Vector2(0, -boardSize.Y), wipeDuration)
+		tween.TweenProperty(wipeSprite, "position", new Vector2(-cellSize, -boardSize.Y - 4 * cellSize), wipeDuration)
 			.SetDelay(0.5f).SetTrans(Tween.TransitionType.Elastic).SetEase(Tween.EaseType.InOut);
 		tween.TweenCallback(Callable.From(() =>
 		{
