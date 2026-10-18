@@ -58,3 +58,9 @@ offset_bottom = -484.0
 script = ExtResource("5_lquwl")
 
 [node name="Crane" parent="." instance=ExtResource("12_ycdy4")]
+
+[node name="Hook" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
