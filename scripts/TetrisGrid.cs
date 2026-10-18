@@ -6,6 +6,10 @@ public partial class TetrisGrid : Node2D
 	[Export]
 	private Label clockLabel;
 
+	[Export]
+	private double lastMinuteDelay = 0.25;  
+	private bool lastMinute;
+
 	[Export(PropertyHint.File, "*.tscn")]
 	private string menuScene = "res://scripts/main_menu.tscn";
 
@@ -111,7 +115,7 @@ public partial class TetrisGrid : Node2D
 		wipeSprite.ZIndex = 100;
 		wipeSprite.Position = new Vector2(0, -boardSize.Y);   //Intial position
 
-		curCooldown = delay;
+		curCooldown = lastMinute ? lastMinuteDelay : delay;
 		currentBlock = GetNextBlock();
 		currentBlock.Visible = true;
 
@@ -130,8 +134,8 @@ public partial class TetrisGrid : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (wiping) return;
     	UpdateClock(delta);
+		if (wiping) return;
 		if (curCooldown <= 0)
 		{
 			FallBlock();
@@ -199,7 +203,7 @@ public partial class TetrisGrid : Node2D
 
 	private void FallBlock()
 	{
-		curCooldown = delay;
+		curCooldown = lastMinute ? lastMinuteDelay : delay;
 		foreach (Vector2I coord in currentBlock.gridCoords())
 		{
 			int newY = coord.Y + 1;
@@ -365,7 +369,8 @@ public partial class TetrisGrid : Node2D
 		{
 			// wipeSprite.Visible = false;
 			wiping = false;
-			curCooldown = delay;
+			curCooldown = lastMinute ? lastMinuteDelay : delay;
+			
 		}));
 	}
 
@@ -375,8 +380,8 @@ public partial class TetrisGrid : Node2D
 
     clockSeconds += delta;
 
-    double gameMinutes = 8 * 60 + clockSeconds * 2;
-
+    double gameMinutes = 12* 60 + clockSeconds * 2;
+	lastMinute = gameMinutes >= 13 * 60;   
     if (gameMinutes >= 14 * 60){
         timeUp = true;
         GetTree().ChangeSceneToFile(menuScene);
