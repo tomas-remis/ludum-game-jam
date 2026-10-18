@@ -137,14 +137,14 @@ z_index = -4
 texture = ExtResource("3_1bvp3")
 
 [node name="TetrisGrid" type="Node2D" parent="Node2d" unique_id=643686811 node_paths=PackedStringArray("wipeSprite", "placeSound", "musicPlayer", "hookController", "scorer", "nextPreview")]
-position = Vector2(-578, -498)
+position = Vector2(-578, -430)
 script = ExtResource("1_ig7tw")
 wipeSprite = NodePath("crusher")
 placeSound = NodePath("Pipe")
 musicPlayer = NodePath("MusicPlayer")
 music = Array[AudioStreamWAV]([ExtResource("4_cegan"), ExtResource("5_82xsv")])
 hookController = NodePath("Node2D")
-cellSize = 60.0
+cellSize = 58.0
 blocks = Array[PackedScene]([ExtResource("2_0xm2m"), ExtResource("5_7mycd"), ExtResource("6_272bh"), ExtResource("7_5vw27"), ExtResource("8_kek77")])
 scorer = NodePath("../../UI/Scorer2")
 nextPreview = NodePath("../../UI/Preview/ScreenColor/Control/TextureRect2")
@@ -155,6 +155,7 @@ stream = ExtResource("9_4c57u")
 [node name="crusher" type="Sprite2D" parent="Node2d/TetrisGrid" unique_id=2134077898]
 position = Vector2(438, -757)
 texture = ExtResource("10_dg77c")
+offset = Vector2(0, -27)
 
 [node name="Node2D" type="Node2D" parent="Node2d/TetrisGrid" unique_id=193122031]
 script = ExtResource("15_ryguw")
