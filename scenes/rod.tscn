@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d3xa3rd5fkxu2"]
+
+[ext_resource type="Script" uid="uid://dubnctxlqwxl7" path="res://scripts/Block.cs" id="2_ch35b"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7w65j"]
+load_path = "res://.godot/imported/I_pipe.png-871eb91b7ed1a58fc4f60ec5bf975766.ctex"
+
+[node name="pixar" type="Node2D" unique_id=1528216000]
+
+[node name="Pivot" type="Node2D" parent="." unique_id=1019497440]
+
+[node name="Sprite" type="Sprite2D" parent="Pivot" unique_id=32262954]
+position = Vector2(-171, -62)
+texture = SubResource("CompressedTexture2D_7w65j")
+centered = false
+script = ExtResource("2_ch35b")
+coords = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2)])
