@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://juk5ha7w503k"]
+[gd_scene format=3 uid="uid://d2dp08yhfkgye"]
 
 [ext_resource type="Script" uid="uid://dw1sfnod57q4u" path="res://scripts/main_menu.gd" id="1_ptpsf"]
 [ext_resource type="Texture2D" uid="uid://cdvbp16et0xfa" path="res://assets/HUD/animated-moscow-title-card-from-the-tetris-movie-2207550534.jpg" id="2_broi1"]
@@ -84,7 +84,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_cyejb")
 text = "TERMINATE
 JOB"
 
-[node name="Label" type="Label" parent="VBoxContainer/Button2" unique_id=1682974482]
+[node name="score" type="Label" parent="VBoxContainer/Button2" unique_id=1682974482]
 layout_mode = 0
 offset_left = -36.0
 offset_top = -282.0

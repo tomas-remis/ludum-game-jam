@@ -12,9 +12,7 @@ func _process(delta: float) -> void:
 
 
 func start_pressed() -> void:
-	pass # Replace with function body.
-	print("Start game add scene when it exists")
-
+	get_tree().change_scene_to_file("res://main.tscn")
 
 func exit_button() -> void:
 	get_tree().quit() # Replace with function body.

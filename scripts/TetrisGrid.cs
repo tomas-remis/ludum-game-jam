@@ -4,6 +4,7 @@ using System;
 public partial class TetrisGrid : Node2D
 {
 	[Export]
+	private int totalScore;
 	private Label clockLabel;
 
 	[Export]
@@ -265,6 +266,7 @@ public partial class TetrisGrid : Node2D
 			}
 		}
 		scorer.UpdateScore(score);
+		totalScore += score;
 	}
 
 	private Block GetNextBlock()
@@ -381,11 +383,14 @@ public partial class TetrisGrid : Node2D
 
     clockSeconds += delta;
 
-    double gameMinutes = 12* 60 + clockSeconds * 2;
-	lastMinute = gameMinutes >= 13 * 60;   
-    if (gameMinutes >= 14 * 60){
+    double gameMinutes = 10* 60 + clockSeconds * 3;
+	lastMinute = gameMinutes >= 15 * 60;   
+    if (gameMinutes >= 17 * 60){
+		scorer.UpdateScore(10);  // final update
         timeUp = true;
-        GetTree().ChangeSceneToFile(menuScene);
+    	GetTree().Root.SetMeta("final_score", totalScore);
+		GetTree().ChangeSceneToFile(menuScene);
+		
         return;
     }
 
