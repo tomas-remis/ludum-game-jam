@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://b25x6761bs00g"]
+[gd_scene format=3 uid="uid://bvjxfrx7ked1g"]
 
+[ext_resource type="Texture2D" uid="uid://bdau3uj7h3ycw" path="res://UI/sky.png" id="1_82xsv"]
 [ext_resource type="Script" uid="uid://q8pnpgng34au" path="res://scripts/TetrisGrid.cs" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://df01el84vckul" path="res://scenes/2x2 block.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bemwyhiefpmba" path="res://UI/buildings.png" id="2_getpj"]
 [ext_resource type="Texture2D" uid="uid://cjxckkmwbdn3n" path="res://UI/container_back.png" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://d1e800m68qgu0" path="res://UI/ground.png" id="3_ryguw"]
 [ext_resource type="AudioStream" uid="uid://b2ylnhd1cyouc" path="res://music/maintheme.wav" id="4_cegan"]
 [ext_resource type="Texture2D" uid="uid://dki52hagifb1s" path="res://UI/container_front.png" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dy4ennb6ypkq2" path="res://scenes/t_car.tscn" id="5_7mycd"]
@@ -23,6 +26,43 @@
 [ext_resource type="Script" uid="uid://ckwe78s0xqw7" path="res://HookPosition.cs" id="15_ryguw"]
 [ext_resource type="Texture2D" uid="uid://basj03kh6a33j" path="res://UI/ui_monitor.png" id="19_cegan"]
 
+[sub_resource type="Gradient" id="Gradient_d13ii"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.9976284, 0.95346516, 0.7623335, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1u8w0"]
+gradient = SubResource("Gradient_d13ii")
+width = 4
+height = 4
+fill = 1
+fill_to = Vector2(0.1, 0)
+repeat = 1
+
+[sub_resource type="Gradient" id="Gradient_0odxb"]
+offsets = PackedFloat32Array(0, 0.7169811, 0.8930818, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.9647059, 1, 1, 1, 0.4591195, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lswn8"]
+gradient = SubResource("Gradient_0odxb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a6jrf"]
+lifetime_randomness = 0.19
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 540, 1)
+velocity_pivot = Vector3(0, -0.2, 0)
+direction = Vector3(10, 10, 0)
+spread = 10.661
+initial_velocity_min = 203.56
+initial_velocity_max = 575.25
+gravity = Vector3(0, 0, 0)
+damping_max = 0.1
+scale_min = 0.5
+scale_over_velocity_max = 2.0
+color_ramp = SubResource("GradientTexture1D_lswn8")
+turbulence_noise_scale = 3.846
+turbulence_influence_max = 0.3
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yaehf"]
 shader = ExtResource("13_2cqfq")
 shader_parameter/resolution = Vector2(320, 180)
@@ -40,23 +80,63 @@ shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
-[node name="Node2D" type="Node2D" unique_id=737821785]
+[node name="Node2D" type="Node2D" unique_id=1504031879]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1243125174]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2015009360]
 
-[node name="Node2D" type="Node2D" parent="." unique_id=595433936]
+[node name="Background" type="Control" parent="." unique_id=1666349972]
+z_index = -5
+layout_mode = 3
+anchors_preset = 0
+offset_left = -962.0
+offset_top = -541.0
+offset_right = -922.0
+offset_bottom = -501.0
 
-[node name="Node" type="Node2D" parent="Node2D" unique_id=1639873130]
+[node name="Sky" type="TextureRect" parent="Background" unique_id=1579306625]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_82xsv")
 
-[node name="Background" type="Sprite2D" parent="Node2D/Node" unique_id=8957759]
-z_index = -1
-texture = ExtResource("3_1bvp3")
+[node name="Buildings" type="TextureRect" parent="Background" unique_id=86607260]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -2.0
+offset_right = 1925.0
+offset_bottom = 1078.0
+texture = ExtResource("2_getpj")
 
-[node name="Foreground" type="Sprite2D" parent="Node2D/Node" unique_id=662781891]
+[node name="DustParticles" type="GPUParticles2D" parent="Background" unique_id=762879215]
+z_index = 10
+position = Vector2(647, 295)
+amount = 32
+amount_ratio = 0.6234
+texture = SubResource("GradientTexture2D_1u8w0")
+lifetime = 11.45
+preprocess = 2.44
+randomness = 0.17
+process_material = SubResource("ParticleProcessMaterial_a6jrf")
+
+[node name="Ground" type="TextureRect" parent="Background" unique_id=1184430955]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_ryguw")
+
+[node name="Node2d" type="Node2D" parent="." unique_id=1483039010]
+
+[node name="Node" type="Node2D" parent="Node2d" unique_id=1191072776]
+
+[node name="Foreground" type="Sprite2D" parent="Node2d/Node" unique_id=784475348]
 z_index = 1
 texture = ExtResource("4_lquwl")
 
-[node name="TetrisGrid" type="Node2D" parent="Node2D" unique_id=1946844083 node_paths=PackedStringArray("wipeSprite", "placeSound", "musicPlayer", "hookController", "scorer", "nextPreview")]
+[node name="Background2" type="Sprite2D" parent="Node2d/Node/Foreground" unique_id=852042349]
+z_index = -1
+texture = ExtResource("3_1bvp3")
+
+[node name="TetrisGrid" type="Node2D" parent="Node2d" unique_id=58068419 node_paths=PackedStringArray("wipeSprite", "placeSound", "musicPlayer", "hookController", "scorer", "nextPreview")]
 position = Vector2(-578, -498)
 script = ExtResource("1_ig7tw")
 wipeSprite = NodePath("crusher")
@@ -69,23 +149,20 @@ blocks = Array[PackedScene]([ExtResource("2_0xm2m"), ExtResource("5_7mycd"), Ext
 scorer = NodePath("../../UI/Scorer2")
 nextPreview = NodePath("../../UI/Preview/ScreenColor/Control/TextureRect2")
 
-[node name="Pipe" type="AudioStreamPlayer" parent="Node2D/TetrisGrid" unique_id=391536957]
+[node name="Pipe" type="AudioStreamPlayer" parent="Node2d/TetrisGrid" unique_id=668718842]
 stream = ExtResource("9_4c57u")
 
-[node name="crusher" type="Sprite2D" parent="Node2D/TetrisGrid" unique_id=739598499]
-visible = false
+[node name="crusher" type="Sprite2D" parent="Node2d/TetrisGrid" unique_id=836344788]
+position = Vector2(438, -757)
 texture = ExtResource("10_dg77c")
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="Node2D/TetrisGrid" unique_id=1829198073]
-autoplay = true
-
-[node name="Node2D" type="Node2D" parent="Node2D/TetrisGrid" unique_id=1712660521]
+[node name="Node2D" type="Node2D" parent="Node2d/TetrisGrid" unique_id=904036115]
 script = ExtResource("15_ryguw")
 
-[node name="Hook" type="Sprite2D" parent="Node2D/TetrisGrid/Node2D" unique_id=343374573]
+[node name="Hook" type="Sprite2D" parent="Node2d/TetrisGrid/Node2D" unique_id=2029257483]
 texture = ExtResource("12_vivmo")
 
-[node name="Wire" type="Sprite2D" parent="Node2D/TetrisGrid/Node2D" unique_id=1588643987]
+[node name="Wire" type="Sprite2D" parent="Node2d/TetrisGrid/Node2D" unique_id=1129052135]
 z_index = -1
 texture_repeat = 2
 position = Vector2(579, -234)
@@ -94,27 +171,38 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
-[node name="Crane" parent="." unique_id=1665579225 instance=ExtResource("12_ycdy4")]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Node2d/TetrisGrid" unique_id=155230147]
+autoplay = true
+
+[node name="Crane" parent="." unique_id=216195639 instance=ExtResource("12_ycdy4")]
 z_index = -3
 offset_left = -828.0
 offset_top = -517.0
 offset_right = -788.0
 offset_bottom = -477.0
 
-[node name="UI" type="Control" parent="." unique_id=1043801303]
+[node name="Hook" type="Control" parent="." unique_id=102539705]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Preview" type="Control" parent="UI" unique_id=405958299]
+[node name="Hook" type="Sprite2D" parent="Hook" unique_id=50104484]
+
+[node name="UI" type="Control" parent="." unique_id=1604569276]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Preview" type="Control" parent="UI" unique_id=962482795]
 anchors_preset = 0
 offset_left = -806.0
 offset_top = -339.0
 offset_right = -766.0
 offset_bottom = -299.0
 
-[node name="ScreenColor" type="ColorRect" parent="UI/Preview" unique_id=1251335834]
+[node name="ScreenColor" type="ColorRect" parent="UI/Preview" unique_id=1330587605]
 layout_mode = 0
 offset_left = -143.0
 offset_top = -174.0
@@ -123,7 +211,7 @@ offset_bottom = -134.0
 scale = Vector2(7.414211, 8.472247)
 color = Color(0.23895198, 0.4102795, 0.3451739, 1)
 
-[node name="Control" type="Control" parent="UI/Preview/ScreenColor" unique_id=1610717215]
+[node name="Control" type="Control" parent="UI/Preview/ScreenColor" unique_id=531390856]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,7 +221,7 @@ offset_bottom = -1.5443039
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect2" type="TextureRect" parent="UI/Preview/ScreenColor/Control" unique_id=986665849]
+[node name="TextureRect2" type="TextureRect" parent="UI/Preview/ScreenColor/Control" unique_id=1948409518]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,7 +233,7 @@ expand_mode = 1
 stretch_mode = 5
 script = ExtResource("13_vivmo")
 
-[node name="Label" type="Label" parent="UI/Preview" unique_id=150243348]
+[node name="Scorer3" type="Label" parent="UI/Preview" unique_id=884277292]
 layout_mode = 0
 offset_left = -92.0
 offset_top = -134.0
@@ -157,7 +245,7 @@ theme_override_font_sizes/font_size = 96
 text = "NEXT"
 horizontal_alignment = 1
 
-[node name="VFX" type="ColorRect" parent="UI/Preview" unique_id=314736641]
+[node name="VFX" type="ColorRect" parent="UI/Preview" unique_id=1506280520]
 material = SubResource("ShaderMaterial_yaehf")
 layout_mode = 0
 offset_left = -143.0
@@ -166,12 +254,12 @@ offset_right = -103.0
 offset_bottom = -131.0
 scale = Vector2(7.2944164, 8.35061)
 
-[node name="Monitor" type="Sprite2D" parent="UI/Preview" unique_id=739082630]
+[node name="Monitor" type="Sprite2D" parent="UI/Preview" unique_id=42881312]
 position = Vector2(60, 108)
 texture = ExtResource("19_cegan")
 metadata/_edit_lock_ = true
 
-[node name="Scorer2" type="Label" parent="UI" unique_id=1638513440]
+[node name="Scorer2" type="Label" parent="UI" unique_id=502027039]
 layout_mode = 0
 offset_left = 653.0
 offset_top = -473.0
