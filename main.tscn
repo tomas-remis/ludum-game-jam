@@ -23,14 +23,15 @@
 [ext_resource type="Texture2D" uid="uid://d2qvjhnidumfs" path="res://UI/hook.png" id="12_vivmo"]
 [ext_resource type="Texture2D" uid="uid://c0ri1aa2mqy4d" path="res://objects/T_car.png" id="12_w48qg"]
 [ext_resource type="PackedScene" uid="uid://yoa1h74ltfvk" path="res://crane.tscn" id="12_ycdy4"]
-[ext_resource type="Shader" path="res://crt_monitor.gdshader" id="13_2cqfq"]
+[ext_resource type="Shader" uid="uid://baq62qt13ikri" path="res://crt_monitor.gdshader" id="13_2cqfq"]
 [ext_resource type="Script" uid="uid://sq23mlp43lq4" path="res://scripts/PiecePreviewer.cs" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://ckwe78s0xqw7" path="res://HookPosition.cs" id="15_ryguw"]
-[ext_resource type="PackedScene" path="res://scenes/rod.tscn" id="15_xuqvo"]
-[ext_resource type="PackedScene" path="res://scenes/duck.tscn" id="16_qsp4k"]
-[ext_resource type="PackedScene" path="res://scenes/gramaphone.tscn" id="17_qsp4k"]
+[ext_resource type="PackedScene" uid="uid://d3xa3rd5fkxu2" path="res://scenes/rod.tscn" id="15_xuqvo"]
+[ext_resource type="PackedScene" uid="uid://dr2hn7825m6yp" path="res://scenes/duck.tscn" id="16_qsp4k"]
+[ext_resource type="PackedScene" uid="uid://dx26y46pwb8l6" path="res://scenes/gramaphone.tscn" id="17_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://neoe0amhygdi" path="res://scenes/tv.tscn" id="18_kq58d"]
 [ext_resource type="Texture2D" uid="uid://basj03kh6a33j" path="res://UI/ui_monitor.png" id="19_cegan"]
+[ext_resource type="FontFile" uid="uid://bnqc1vttqfi74" path="res://assets/fonts-DSEG_v046/DSEG14-Modern/DSEG14Modern-Bold.woff" id="31_htxhm"]
 
 [sub_resource type="Gradient" id="Gradient_xuqvo"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.039215688)
@@ -318,18 +319,18 @@ offset_top = -503.0
 offset_right = 701.0
 offset_bottom = -426.0
 theme_override_colors/font_color = Color(1, 0.8995, 0.32999998, 1)
-theme_override_fonts/font = ExtResource("11_vivmo")
-theme_override_font_sizes/font_size = 128
+theme_override_fonts/font = ExtResource("31_htxhm")
+theme_override_font_sizes/font_size = 64
 text = "SCORE:"
 script = ExtResource("5_lquwl")
 
 [node name="Timer" type="Label" parent="UI" unique_id=1432779621]
 layout_mode = 0
-offset_left = 491.0
-offset_top = -323.0
-offset_right = 773.0
-offset_bottom = -246.0
+offset_left = 436.0
+offset_top = -336.0
+offset_right = 958.0
+offset_bottom = -208.0
 theme_override_colors/font_color = Color(0.32999998, 1, 0.47516668, 1)
-theme_override_fonts/font = ExtResource("11_vivmo")
-theme_override_font_sizes/font_size = 128
+theme_override_fonts/font = ExtResource("31_htxhm")
+theme_override_font_sizes/font_size = 65
 text = "Timer"

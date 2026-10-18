@@ -86,25 +86,25 @@ public partial class TetrisGrid : Node2D
 
 
 
-	// // For better debugging
-	// public override void _Draw()
-	// {
-	// 	if (currentBlock is not null)
-	// 	{
-	// 		foreach (Vector2I coord in currentBlock.gridCoords())
-	// 		{
-	// 			var rect = new Rect2(
-	// 				coord.X * cellSize,
-	// 				(coord.Y - 0.5f) * cellSize,
-	// 				cellSize,
-	// 				cellSize
-	// 			);
+	// For better debugging
+	public override void _Draw()
+	{
+		if (currentBlock is not null)
+		{
+			foreach (Vector2I coord in currentBlock.gridCoords())
+			{
+				var rect = new Rect2(
+					coord.X * cellSize,
+					(coord.Y - 0.5f) * cellSize,
+					cellSize,
+					cellSize
+				);
 
-	// 			DrawRect(rect, new Color(0, 0, 1, 0.25f), true);
-	// 			DrawRect(rect, Colors.Blue, false, 1.0f);
-	// 		}
-	// 	}
-	// }
+				DrawRect(rect, new Color(0, 0, 1, 0.25f), true);
+				DrawRect(rect, Colors.Blue, false, 1.0f);
+			}
+		}
+	}
 
 
 	private int thresholdRow = 2;
