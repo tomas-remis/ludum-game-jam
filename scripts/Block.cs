@@ -19,18 +19,8 @@ public partial class Block : Sprite2D
 	public Vector2 pivot;
 	[Export]
 	public Vector2I offsetInternal = new(0, 0);
-	Turn rotation = Up;
 
-	public override void _Ready()
-	{
-		var rect = new ColorRect
-			{
-				Color = Colors.Blue,
-				Size = new Vector2(30, 30) / Scale,
-				Position = new Vector2(-15, -15)
-			};
-		AddChild(rect);		
-	}
+	Turn rotation = Up;
 
 
 	public void AdjustScale(float cellSize)

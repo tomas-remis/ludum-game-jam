@@ -13,7 +13,17 @@ public partial class TetrisGrid : Node2D
 
 
 	private Block currentBlock;
-	private Block nextBlock;
+
+	private Block _nextBlock;
+	private Block nextBlock
+	{
+		get => _nextBlock;
+		set
+		{
+			_nextBlock = value;
+			nextPreview.UpdateSprite(nextBlock.Texture);
+		}
+	}
 	private int[,] grid = new int[18, 15];
 
 	[Export]
@@ -39,6 +49,9 @@ public partial class TetrisGrid : Node2D
 	[Export] 
 	private double moveRepeatInterval = 0.08;
 
+	[Export]
+	private PiecePreviewer nextPreview;
+
 	private double moveRepeatTimer;
 	private int heldMoveDirection;
 	
@@ -47,22 +60,22 @@ public partial class TetrisGrid : Node2D
  // For better debugging
 	public override void _Draw()
 	{
-		foreach (Vector2I coord in currentBlock.gridCoords())
+		if(currentBlock is not null)
 		{
-			var rect = new Rect2(
-				coord.X * cellSize,
-				coord.Y * cellSize,
-				cellSize,
-				cellSize
-			);
+			foreach (Vector2I coord in currentBlock.gridCoords())
+			{
+				var rect = new Rect2(
+					coord.X * cellSize,
+					(coord.Y - 0.5f) * cellSize,
+					cellSize,
+					cellSize
+				);
 
-			DrawRect(rect, new Color(0, 0, 1, 0.25f), true);
-			DrawRect(rect, Colors.Blue, false, 1.0f);
+				DrawRect(rect, new Color(0, 0, 1, 0.25f), true);
+				DrawRect(rect, Colors.Blue, false, 1.0f);
+			}	
 		}
 	}
-
-
-
 
 
 	private int thresholdRow = 2;
@@ -71,13 +84,18 @@ public partial class TetrisGrid : Node2D
 
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public override async void _Ready()
 	{
 		curCooldown = delay;
-		currentBlock = GetNextBlock(4);
+		currentBlock = GetNextBlock();
 		currentBlock.Visible = true;
-		nextBlock = GetNextBlock(1);
-	
+
+		if (!nextPreview.IsNodeReady())
+		{
+			await ToSignal(nextPreview, Node.SignalName.Ready);
+		}
+
+		nextBlock = GetNextBlock();
 	}
 	
 
@@ -102,7 +120,7 @@ public partial class TetrisGrid : Node2D
 		else if (@event.IsActionPressed("move_down"))
 			FallBlock();
 		else if (@event.IsActionPressed("hard_drop"))
-		HardDrop();
+			HardDrop();
 	}
 
 
@@ -110,7 +128,11 @@ public partial class TetrisGrid : Node2D
 	{
 		Block dropping = currentBlock;
 		while (currentBlock == dropping)
-			FallBlock(); //This was pure torture for me 4 years ago. 
+		{
+			GD.Print(currentBlock.offsetInternal);
+			FallBlock(); //This was pure torture for me 4 years ago.
+		}
+			 
 			
 	}
 	private void HandleHorizontalInput(double delta)
@@ -142,7 +164,6 @@ public partial class TetrisGrid : Node2D
 			moveRepeatTimer = moveRepeatInterval;
 		}
 	}
-
 	
 	private void FallBlock(){
 		curCooldown = delay;
@@ -169,7 +190,7 @@ public partial class TetrisGrid : Node2D
 			if(coord.Y <= thresholdRow){
 				StartWipe();
 				//ResetGrid();
-				break;
+				return;
 			}
 			grid[coord.Y, coord.X] = 1;	
 		}
@@ -180,6 +201,10 @@ public partial class TetrisGrid : Node2D
 	
 	private void ResetGrid(){
 		GetTree().CallGroup("placed", "queue_free");
+
+		currentBlock = nextBlock;
+		currentBlock.Visible = true;
+		nextBlock = GetNextBlock();
 
 		int score = 0;
 		for(int y = 0; y < grid.GetLength(0); ++y)
@@ -193,12 +218,12 @@ public partial class TetrisGrid : Node2D
 		scorer.UpdateScore(score);
 	}
 	
-	private Block GetNextBlock(int index=0){
-		//index = gen.RandiRange(0, blocks.Length - 1);
+	private Block GetNextBlock(){
+		int index = gen.RandiRange(0, blocks.Length - 1);
 		//int index = 1;
 		Node2D parent = blocks[index].Instantiate() as Node2D;
 		Block block = parent.FindChild("Sprite", recursive: true, owned: false) as Block;
-		//block.Visible = false;
+		block.Visible = false;
 
 		int offsetInternalY = 0;
 		int offsetInternalX = grid.GetLength(1) / 2;
@@ -210,7 +235,7 @@ public partial class TetrisGrid : Node2D
 
 		parent.Position = new Vector2(
 			offsetInternalX + block.pivot.X,
-			offsetInternalY + block.pivot.Y
+			offsetInternalY + block.pivot.Y - 0.5f
 		) * cellSize;
  
 		AddChild(parent);
@@ -259,6 +284,7 @@ public partial class TetrisGrid : Node2D
 	}
 
 	private void StartWipe(){
+		currentBlock = null;
 		wiping = true;
 		heldMoveDirection = 0;
 		moveRepeatTimer = 0; //Pauses
@@ -271,9 +297,9 @@ public partial class TetrisGrid : Node2D
 		wipeSprite.Visible = true;
 
 		var tween = CreateTween();
-		tween.TweenProperty(wipeSprite, "position", Vector2.Zero, wipeDuration);                      // slide in
+		tween.TweenProperty(wipeSprite, "position", Vector2.Zero, wipeDuration);                    // slide in
 		tween.TweenCallback(Callable.From(ResetGrid));                                                // clear while covered
-		tween.TweenProperty(wipeSprite, "position", new Vector2(0, -boardSize.Y), wipeDuration);       // slide out
+		tween.TweenProperty(wipeSprite, "position", new Vector2(0, -boardSize.Y), wipeDuration).SetDelay(0.5f);       // slide out
 		tween.TweenCallback(Callable.From(() => {
 			wipeSprite.Visible = false;
 			wiping = false;
