@@ -3,6 +3,15 @@ using System;
 
 public partial class TetrisGrid : Node2D
 {
+	[Export]
+	private Sprite2D wipeSprite;
+
+	[Export]
+	private double wipeDuration = 0.8;
+	private bool wiping;
+
+
+
 	private Block currentBlock;
 	private Block nextBlock;
 	private int[,] grid = new int[18, 15];
@@ -75,6 +84,7 @@ public partial class TetrisGrid : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (wiping) return;
 		if(curCooldown <= 0){
 			FallBlock();	
 		}else{
@@ -86,6 +96,7 @@ public partial class TetrisGrid : Node2D
 	
 	public override void _Input(InputEvent @event)
 	{
+		if (wiping) return;
 		if (@event.IsActionPressed("rotate"))
 			RotateBlock();
 		else if (@event.IsActionPressed("move_down"))
@@ -142,7 +153,7 @@ public partial class TetrisGrid : Node2D
 				PlaceBlock();
 				return;
 			}
-		}
+		}	
 		Node2D parent = currentBlock.GetParent<Node2D>();
 
 		parent.Position += new Vector2(0, cellSize);
@@ -151,9 +162,13 @@ public partial class TetrisGrid : Node2D
 	
 	private void PlaceBlock(){
 		placeSound?.Play();
+		currentBlock.GetParent().AddToGroup("placed");
+		
+		
 		foreach(Vector2I coord in currentBlock.gridCoords()){
 			if(coord.Y <= thresholdRow){
-				ResetGrid();
+				StartWipe();
+				//ResetGrid();
 				break;
 			}
 			grid[coord.Y, coord.X] = 1;	
@@ -164,21 +179,14 @@ public partial class TetrisGrid : Node2D
 	}
 	
 	private void ResetGrid(){
-		foreach(Node child in GetChildren()){
-			if(nextBlock != child)
-				child.QueueFree();
-		}
+		GetTree().CallGroup("placed", "queue_free");
 
 		int score = 0;
-
 		for(int y = 0; y < grid.GetLength(0); ++y)
 		{
 			for(int x = 0; x < grid.GetLength(1); ++x)
 			{
-				if(grid[y, x] != 0)
-				{
-					score += (y < thresholdRow) ? -50 : 50;
-				}
+				if(grid[y, x] != 0) score += 50;
 				grid[y, x] = 0;
 			}
 		}
@@ -248,5 +256,28 @@ public partial class TetrisGrid : Node2D
 		Node2D parent = currentBlock.GetParent<Node2D>();
 		parent.Position += new Vector2(cellSize * dir, 0);
 		currentBlock.offsetInternal += new Vector2I(dir, 0);
+	}
+
+	private void StartWipe(){
+		wiping = true;
+		heldMoveDirection = 0;
+		moveRepeatTimer = 0; //Pauses
+
+		Vector2 boardSize = new Vector2(grid.GetLength(1), grid.GetLength(0)) * cellSize;
+		wipeSprite.Centered = false;
+		wipeSprite.Scale = boardSize / wipeSprite.Texture.GetSize();
+		wipeSprite.ZIndex = 100;
+		wipeSprite.Position = new Vector2(0, -boardSize.Y);   //Intial opiosn
+		wipeSprite.Visible = true;
+
+		var tween = CreateTween();
+		tween.TweenProperty(wipeSprite, "position", Vector2.Zero, wipeDuration);                      // slide in
+		tween.TweenCallback(Callable.From(ResetGrid));                                                // clear while covered
+		tween.TweenProperty(wipeSprite, "position", new Vector2(0, -boardSize.Y), wipeDuration);       // slide out
+		tween.TweenCallback(Callable.From(() => {
+			wipeSprite.Visible = false;
+			wiping = false;
+			curCooldown = delay;
+		}));
 	}
 }
