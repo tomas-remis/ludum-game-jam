@@ -4,6 +4,15 @@ using System;
 public partial class TetrisGrid : Node2D
 {
 	[Export]
+	private Label clockLabel;
+
+	[Export(PropertyHint.File, "*.tscn")]
+	private string menuScene = "res://scripts/main_menu.tscn";
+
+	private double clockSeconds;  
+	private bool timeUp;
+
+	[Export]
 	private Sprite2D wipeSprite;
 
 	[Export]
@@ -122,6 +131,7 @@ public partial class TetrisGrid : Node2D
 	public override void _Process(double delta)
 	{
 		if (wiping) return;
+    	UpdateClock(delta);
 		if (curCooldown <= 0)
 		{
 			FallBlock();
@@ -358,4 +368,27 @@ public partial class TetrisGrid : Node2D
 			curCooldown = delay;
 		}));
 	}
+
+
+	private void UpdateClock(double delta){
+    if (timeUp) return;
+
+    clockSeconds += delta;
+
+    double gameMinutes = 8 * 60 + clockSeconds * 2;
+
+    if (gameMinutes >= 14 * 60){
+        timeUp = true;
+        GetTree().ChangeSceneToFile(menuScene);
+        return;
+    }
+
+    int hour = (int)(gameMinutes / 60);
+    int minute = (int)(gameMinutes % 60);
+    int hour12 = hour % 12 == 0 ? 12 : hour % 12;
+    string suffix = hour < 12 ? "AM" : "PM";
+
+    clockLabel.Text = $"{hour12}:{minute:00} {suffix}";
+	}
 }
+
